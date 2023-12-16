@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import PrimarySearchAppBar from './components/PrimarySearchAppBar';
+// import { useState } from 'react'
+import SearchBar from './components/SearchBar';
 
 function App() {
 
   return (
     <div>
-      <PrimarySearchAppBar />
+      <SearchBar />
     </div>
   )
 }
