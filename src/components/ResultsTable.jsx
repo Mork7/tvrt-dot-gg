@@ -8,7 +8,12 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
 function createData(name, rank, lp, wins, losses) {
-  const winRate = wins / (wins + losses);
+  let winRate = wins / (wins + losses);
+  
+  if (isNaN(winRate)) {
+    winRate = 0;
+  }
+  
   return { name, rank, lp, wins, losses, winRate };
 }
 
@@ -17,6 +22,7 @@ const rows = [
   createData("Shadowhawk", "Emerald IV", 0, 137, 160),
   createData("Gwegg", "Gold II", 8, 6, 3),
   createData("Demm Nips", "Emerald IV", 0, 38, 23),
+  createData("Verax", "Emerald IV", 49, 0, 0),
 ];
 
 const headerCellStyle = {
