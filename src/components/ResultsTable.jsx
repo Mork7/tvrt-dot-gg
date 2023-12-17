@@ -46,48 +46,43 @@ const cellStyle = {
 
 function selectRankImage(rank) {
   const imageDict = {
-    "Iron": "./iron.webp",
-    "Bronze": "./bronze.webp",
-    "Silver" : "./silver.webp",
-    "Gold" : "./gold.webp",
-    "Platinum" : "./platinum.webp",
-    "Emerald": "./emerald.webp",
-    "Diamond" : "./diamond.webp",
-    "Master" : "./master.webp",
-    "Grandmaster" : "./grandmaster.webp",
-    "Challenger" : "./challenger.webp",
+    Iron: "./iron.webp",
+    Bronze: "./bronze.webp",
+    Silver: "./silver.webp",
+    Gold: "./gold.webp",
+    Platinum: "./platinum.webp",
+    Emerald: "./emerald.webp",
+    Diamond: "./diamond.webp",
+    Master: "./master.webp",
+    Grandmaster: "./grandmaster.webp",
+    Challenger: "./challenger.webp",
+  };
+
+  switch (true) {
+    case rank.toLowerCase().includes("iron"):
+      return imageDict.Iron;
+    case rank.toLowerCase().includes("bronze"):
+      return imageDict.Bronze;
+    case rank.toLowerCase().includes("silver"):
+      return imageDict.Silver;
+    case rank.toLowerCase().includes("gold"):
+      return imageDict.Gold;
+    case rank.toLowerCase().includes("platinum"):
+      return imageDict.Platinum;
+    case rank.toLowerCase().includes("emerald"):
+      return imageDict.Emerald;
+    case rank.toLowerCase().includes("diamond"):
+      return imageDict.Diamond;
+    case rank.toLowerCase() === "master":
+      return imageDict.Master;
+    case rank.toLowerCase() === "grandmaster":
+      return imageDict.Grandmaster;
+    case rank.toLowerCase() === "challenger":
+      return imageDict.Challenger;
+    default:
+      // Handle cases where no match is found
+      return undefined;
   }
-
-  if (rank.toLowerCase().includes("iron")){
-    return imageDict.Iron
-
-  } else if (rank.toLowerCase().includes("bronze")){
-    return imageDict.Bronze
-  
-  } else if (rank.toLowerCase().includes("silver")){
-    return imageDict.Silver
-
-  } else if (rank.toLowerCase().includes("gold")){
-    return imageDict.Gold
-  
-  } else if (rank.toLowerCase().includes("platinum")){
-    return imageDict.Platinum
-  
-  } else if (rank.toLowerCase().includes("emerald")){
-    return imageDict.Emerald
-  
-  } else if (rank.toLowerCase().includes("diamond")){
-    return imageDict.Diamond
-  
-  } else if (rank.toLowerCase() === "master"){
-    return imageDict.Master
-
-  } else if (rank.toLowerCase() === "grandmaster"){
-    return imageDict.Grandmaster
-  
-  } else if (rank.toLowerCase() === "challenger"){
-    return imageDict.Challenger
-  } 
 }
 
 export default function ResultsTable() {
