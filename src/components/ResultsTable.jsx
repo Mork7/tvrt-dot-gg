@@ -23,6 +23,7 @@ const rows = [
   createData("Gwegg", "Gold II", 8, 6, 3),
   createData("Demm Nips", "Emerald IV", 0, 38, 23),
   createData("Verax", "Emerald IV", 49, 0, 0),
+  createData("RogueRaven", "Emerald IV", 0, 199, 202),
 ];
 
 const headerCellStyle = {
