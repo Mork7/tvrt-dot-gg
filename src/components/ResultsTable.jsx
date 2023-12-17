@@ -19,10 +19,9 @@ function createData(name, rank, lp, wins, losses) {
 
 const rows = [
   createData("Morkster", "Emerald III", 39, 200, 188),
-  createData("Shadowhawk", "Emerald IV", 0, 137, 160),
-  createData("Gwegg", "Gold II", 8, 6, 3),
-  createData("Demm Nips", "Emerald IV", 0, 38, 23),
-  createData("Verax", "Emerald IV", 49, 0, 0),
+  createData("TVRT Shadowhawk", "Emerald IV", 0, 137, 160),
+  createData("TVRT Gwegg", "Gold II", 8, 6, 3),
+  createData("TVRT Verax", "Emerald IV", 49, 0, 0),
   createData("muaythaiguy22", "Iron I", 3, 5, 5),
   createData("RogueRaven", "Emerald IV", 0, 199, 202),
   createData("bobjenkins1", "Challenger", 2104, 246, 175),
