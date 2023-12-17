@@ -79,13 +79,13 @@ function selectRankImage(rank) {
   } else if (rank.toLowerCase().includes("diamond")){
     return imageDict.Diamond
   
-  } else if (rank === "Master"){
+  } else if (rank.toLowerCase() === "master"){
     return imageDict.Master
 
-  } else if (rank === "Grandmaster"){
+  } else if (rank.toLowerCase() === "grandmaster"){
     return imageDict.Grandmaster
   
-  } else if (rank === "Challenger"){
+  } else if (rank.toLowerCase() === "challenger"){
     return imageDict.Challenger
   } 
 }
