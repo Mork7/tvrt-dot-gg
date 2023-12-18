@@ -21,7 +21,7 @@ const rows = [
   createData("Morkster", "Emerald III", 39, 200, 188),
   createData("TVRT Shadowhawk", "Emerald IV", 0, 137, 160),
   createData("TVRT Gwegg", "Gold II", 8, 6, 3),
-  createData("TVRT Verax", "Emerald IV", 49, 0, 0),
+  createData("TVRT Verax", "Platinum I", 49, 164, 157),
   createData("muaythaiguy22", "Iron I", 3, 5, 5),
   createData("RogueRaven", "Emerald IV", 0, 199, 202),
   createData("bobjenkins1", "Challenger", 2104, 246, 175),
@@ -31,12 +31,14 @@ const rows = [
   createData("Gucci Grandpa", "Silver I", 95, 14, 9),
   createData("Wittsie", "Master", 543, 199, 170),
   createData("Youri Tarted", "Bronze I", 99, 2, 4),
+  createData("Manly Mufasa", "Silver III", 34, 3, 5),
 ];
 
 const headerCellStyle = {
   borderBottom: "2px solid #000",
   textDecoration: "underline",
   fontWeight: "bold",
+  backgroundColor: "#0e183b"
 };
 
 const cellStyle = {
@@ -87,7 +89,7 @@ function selectRankImage(rank) {
 
 export default function ResultsTable() {
   return (
-    <Box sx={{ width: "40%", marginLeft: "auto", paddingBottom: "20px" }}>
+    <Box sx={{ width: "40%", marginLeft: "auto", border: "1px solid white" }}>
       <TableContainer component={Paper}>
         <Table
           sx={{ minWidth: 650, backgroundColor: "#212422" }}
