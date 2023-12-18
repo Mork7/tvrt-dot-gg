@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
 const fontColor = "#d5d6db";
+const backColor = "#212422";
 
 export default function ProfileTile() {
   return (
@@ -12,10 +13,11 @@ export default function ProfileTile() {
       sx={{
         height: "400px",
         width: "500px",
-        backgroundColor: "#212422",
+        backgroundColor: backColor,
         margin: "10px 10px auto ",
         display: "flex",
         flexDirection: "column",
+        // background: `radial-gradient(circle, #343636, ${backColor})`
       }}
     >
       <Box
@@ -25,8 +27,8 @@ export default function ProfileTile() {
         <img
           src="./profileIcon665.webp"
           style={{
-            height: "150px",
-            width: "150px",
+            height: "120px",
+            width: "120px",
             backgroundColor: "blue",
             zIndex: 1, // Set zIndex to bring the div to the front
             margin: "10px 0 0 10px",
@@ -54,7 +56,7 @@ export default function ProfileTile() {
           color: "#d5d6db",
         }}
       >
-        &nbsp;&nbsp;Ranked Solo/Duo
+        &nbsp;&nbsp;Ranked Solo
       </Typography>
       <Box sx={{ display: "flex", marginLeft: "5px"}}>
         <img src="./emerald.webp" alt="rank" style={{ width: "130px" }} />
@@ -65,12 +67,18 @@ export default function ProfileTile() {
             color: fontColor,
             fontWeight: 800,
             marginTop: "25px",
-            padding: "10px"
+            padding: "10px",
           }}
         >
           Emerald 3
         </Typography>
-        <Typography sx={{margin: "40px 0 0 100px", color: fontColor}}> 200W 188L</Typography>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <Typography sx={{ margin: "40px 0 0 100px", color: fontColor }}>
+            {" "}
+            200W 188L
+          </Typography>
+          <Typography sx={{ color: fontColor, margin: "10px 0 0 100px", fontSize: 10 }}>Win Rate 52%</Typography>
+        </Box>
       </Box>
       <ButtonGroup
         variant="outlined"
