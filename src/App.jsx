@@ -16,7 +16,7 @@ const responsiveSettings = {
 
 function App() {
   return (
-    <div style={{ backgroundColor: "#242b42", height: "100%" }}>
+    <div style={{ background: "radial-gradient(circle, #333333, #242b42)", height: "100%" }}>
       <SearchBar />
       <Box
         sx={{
