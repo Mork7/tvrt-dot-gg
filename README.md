@@ -14,7 +14,7 @@ TVRT-dot-gg is a personal project that will utilize various API's to generate re
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/tvrt-dot-gg.git
+    git clone https://github.com/Mork7/tvrt-dot-gg.git
     ```
 
 2. Navigate to the project directory:
