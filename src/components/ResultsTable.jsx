@@ -35,7 +35,7 @@ const rows = [
 ];
 
 const headerCellStyle = {
-  borderBottom: "2px solid #000",
+  borderBottom: "2px solid #34333d",
   textDecoration: "underline",
   fontWeight: "bold",
   backgroundColor: "#0e183b"
@@ -43,7 +43,7 @@ const headerCellStyle = {
 
 const cellStyle = {
   color: "white",
-  borderBottom: "1px solid white",
+  borderBottom: "1px solid #34333d",
 };
 
 function selectRankImage(rank) {
@@ -89,8 +89,8 @@ function selectRankImage(rank) {
 
 export default function ResultsTable() {
   return (
-    <Box sx={{ width: "40%", margin: "10px 0px 10px auto", border: "1px solid white",  }}>
-      <TableContainer component={Paper}>
+    <Box sx={{ width: "40%", margin: "10px 0px 10px auto",  }}>
+      <TableContainer component={Paper} sx={{borderRadius: "1%"}}>
         <Table
           sx={{ minWidth: 650, backgroundColor: "#212422" }}
           aria-label="simple table"
