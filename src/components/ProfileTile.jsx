@@ -1,5 +1,8 @@
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/system/Box";
+import Button from "@mui/material/Button";
+import ButtonGroup from "@mui/material/ButtonGroup";
 
 export default function ProfileTile() {
   return (
@@ -13,29 +16,48 @@ export default function ProfileTile() {
         flexDirection: "column",
       }}
     >
-      <Typography
-        variant="h5"
-        sx={{
-          color: "#d5d6db",
-          margin: "10px 10px",
-          borderBottom: "2px solid #d5d6db",
-        }}
+      <Box
+        component="section"
+        sx={{ p: 0, display: "flex", flexDirection: "row" }}
       >
-        Ranked Solo/Duo
-      </Typography>
-      <div>
         <img
-          src="./astro-sloth.jpg"
+          src="./profileIcon665.webp"
           style={{
-            height: "260px",
-            width: "220px",
+            height: "150px",
+            width: "150px",
             backgroundColor: "blue",
             zIndex: 1, // Set zIndex to bring the div to the front
             margin: "10px 0 0 10px",
-            borderRadius: "4%",
+            borderRadius: "20%",
           }}
         ></img>
-      </div>
+        <Typography
+          variant="h5"
+          sx={{
+            color: "#d5d6db",
+            padding: "10px",
+            margin: "10px 10px",
+            fontWeight: 1000,
+          }}
+        >
+          Morkster #TVRT
+        </Typography>
+      </Box>
+      <Box sx={{border: "1px solid white", display: "flex"}}>
+          <img src="./emerald.webp" alt="" />
+          <Typography variant="h5" sx={{justifyContent: "center", marginLeft: "auto"}}>
+            Emerald 3
+          </Typography>
+      </Box> 
+
+      <ButtonGroup
+        variant="outlined"
+        aria-label="outlined button group"
+        sx={{ justifyContent: "center", marginTop: "100px" }}
+      >
+        <Button>Update</Button>
+        <Button>Tier Graph</Button>
+      </ButtonGroup>
     </Paper>
   );
 }
