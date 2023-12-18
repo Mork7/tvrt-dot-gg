@@ -4,12 +4,14 @@ import Box from "@mui/system/Box";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
+const fontColor = "#d5d6db";
+
 export default function ProfileTile() {
   return (
     <Paper
       sx={{
         height: "400px",
-        width: "40rem",
+        width: "500px",
         backgroundColor: "#212422",
         margin: "10px 10px auto ",
         display: "flex",
@@ -34,7 +36,7 @@ export default function ProfileTile() {
         <Typography
           variant="h5"
           sx={{
-            color: "#d5d6db",
+            color: fontColor,
             padding: "10px",
             margin: "10px 10px",
             fontWeight: 1000,
@@ -43,17 +45,37 @@ export default function ProfileTile() {
           Morkster #TVRT
         </Typography>
       </Box>
-      <Box sx={{border: "1px solid white", display: "flex"}}>
-          <img src="./emerald.webp" alt="" />
-          <Typography variant="h5" sx={{justifyContent: "center", marginLeft: "auto"}}>
-            Emerald 3
-          </Typography>
-      </Box> 
-
+      <Typography
+        variant="h6"
+        sx={{
+          paddingTop: "15px",
+          paddingBottom: "10px",
+          borderBottom: "1px solid #34333d",
+          color: "#d5d6db",
+        }}
+      >
+        &nbsp;&nbsp;Ranked Solo/Duo
+      </Typography>
+      <Box sx={{ display: "flex", marginLeft: "5px"}}>
+        <img src="./emerald.webp" alt="rank" style={{ width: "130px" }} />
+        <Typography
+          variant="h5"
+          sx={{
+            justifyContent: "center",
+            color: fontColor,
+            fontWeight: 800,
+            marginTop: "25px",
+            padding: "10px"
+          }}
+        >
+          Emerald 3
+        </Typography>
+        <Typography sx={{margin: "40px 0 0 100px", color: fontColor}}> 200W 188L</Typography>
+      </Box>
       <ButtonGroup
         variant="outlined"
         aria-label="outlined button group"
-        sx={{ justifyContent: "center", marginTop: "100px" }}
+        sx={{ justifyContent: "center" }}
       >
         <Button>Update</Button>
         <Button>Tier Graph</Button>
