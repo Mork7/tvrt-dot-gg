@@ -1,13 +1,11 @@
 # TVRT-dot-gg
 
-TVRT-dot-gg is a lightweight app designed for tracking your favorite TV shows. This simple tool helps you stay organized and never miss an episode.
+TVRT-dot-gg is a personal project that will utilize various API's to generate real-time stats of players from League of Legends.
 
 ## Features
 
-- **Track Your Shows:** Add and manage the TV shows you're watching.
-- **Episode Progress:** Monitor your viewing progress for each show.
-- **Release Schedule:** Stay informed about upcoming episodes.
-- **Search Functionality:** Easily find and add new shows to your watchlist.
+- **Pull ranked stats:** You can pull your ranked stats and display them.
+- **Pull match history:** A players match history will be displayed.
 
 ## Getting Started
 
@@ -29,16 +27,11 @@ TVRT-dot-gg is a lightweight app designed for tracking your favorite TV shows. T
 
 ## Usage
 
-1. Click on "Add Show" to add a new TV show.
-2. Fill in the details and click "Save."
-3. Monitor your show's progress and release schedule on the main dashboard.
+1. Search yourself or another player via format "SummonerName - Tagline".
 
-That's it! TVRT-dot-gg is designed to be simple and intuitive for all your TV tracking needs.
+That's it! TVRT-dot-gg is designed to be simple and intuitive for all your player stats needs.
 
 Feel free to customize and expand the app based on your preferences.
-
-Happy watching!
-
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
