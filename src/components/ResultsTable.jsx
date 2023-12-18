@@ -42,7 +42,7 @@ const headerCellStyle = {
 };
 
 const cellStyle = {
-  color: "white",
+  color: "#d5d6db",
   borderBottom: "1px solid #34333d",
 };
 
@@ -89,7 +89,7 @@ function selectRankImage(rank) {
 
 export default function ResultsTable() {
   return (
-    <Box sx={{ width: "40%", margin: "10px 0px 10px auto",  }}>
+    <Box sx={{ width: "50%", margin: "10px 0px 10px auto",  }}>
       <TableContainer component={Paper} sx={{borderRadius: "1%"}}>
         <Table
           sx={{ minWidth: 650, backgroundColor: "#212422" }}
