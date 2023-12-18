@@ -89,7 +89,7 @@ function selectRankImage(rank) {
 
 export default function ResultsTable() {
   return (
-    <Box sx={{ width: "40%", marginLeft: "auto", border: "1px solid white" }}>
+    <Box sx={{ width: "40%", margin: "10px 0px 10px auto", border: "1px solid white",  }}>
       <TableContainer component={Paper}>
         <Table
           sx={{ minWidth: 650, backgroundColor: "#212422" }}
