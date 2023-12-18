@@ -1,6 +1,6 @@
 # TVRT-dot-gg
 
-TVRT-dot-gg is a personal project that will utilize various API's to generate real-time stats of players from League of Legends.
+TVRT-dot-gg is a personal and learning project for a League of Legends app that will utilize various API's to generate real-time stats of players.
 
 ## Features
 
