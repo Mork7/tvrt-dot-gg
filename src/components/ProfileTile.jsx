@@ -12,6 +12,10 @@ const smallScreenStyles = {
     flexDirection: "column",
     alignItems: "center",
     height: "auto",
+    width: "auto",
+    paddingLeft: "3rem",
+    paddingRight: "3rem"
+
   },
 };
 
@@ -19,7 +23,7 @@ export default function ProfileTile() {
   return (
     <Paper
       sx={{
-        height: "400px",
+        height: "100%",
         width: "500px",
         backgroundColor: backColor,
         margin: "10px 10px auto ",
@@ -125,7 +129,7 @@ export default function ProfileTile() {
       <ButtonGroup
         variant="outlined"
         aria-label="outlined button group"
-        sx={{ justifyContent: "center", margin: "auto" }}
+        sx={{ justifyContent: "center", margin: "auto", marginBottom: "10px" }}
       >
         <Button>Update</Button>
         <Button>Tier Graph</Button>

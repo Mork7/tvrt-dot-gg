@@ -6,17 +6,19 @@ import Box from "@mui/system/Box";
 
 const responsiveSettings = {
   display: "flex",
-  flexDirection: "column",
-  alignItems: "center", // Stack components in a column on smaller screens
-  "@media (min-width: 790px)": {
-    flexDirection: "row", // Display components in a row on larger screens
+  flexDirection: "row",
+  alignItems: "center",
+  "@media (max-width: 790px)": {
+    flexDirection: "column",
     alignItems: "center",
   },
 };
 
 function App() {
   return (
-    <div style={{ background: "radial-gradient(circle, #333333, #242b42)", height: "100%" }}>
+    <Box sx={{ background: "radial-gradient(circle, #333333, #242b42)", height: "100%", "@media (max-width: 412px)": {
+      width: "100%",
+    },}}>
       <SearchBar />
       <Box
         sx={{
@@ -26,7 +28,7 @@ function App() {
         <ProfileTile />
         <ResultsTable />
       </Box>
-    </div>
+    </Box>
   );
 }
 

@@ -180,7 +180,7 @@ export default function SearchBar() {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-              sx={{width: "350px", bgcolor: "#47474a"}}
+              sx={{ bgcolor: "#47474a"}}
               placeholder="Search summoner…"
               inputProps={{ 'aria-label': 'search' }}
             />
