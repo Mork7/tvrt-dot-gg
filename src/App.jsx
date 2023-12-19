@@ -23,6 +23,7 @@ function App() {
       <Box
         sx={{
           ...responsiveSettings,
+          marginTop: "100px"
         }}
       >
         <ProfileTile />

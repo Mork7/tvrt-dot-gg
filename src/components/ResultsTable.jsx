@@ -7,6 +7,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
+// CREATEDATA. Will take in name, rank, lp, wins, losses
 function createData(name, rank, lp, wins, losses) {
   let winRate = wins / (wins + losses);
 
@@ -17,6 +18,8 @@ function createData(name, rank, lp, wins, losses) {
   return { name, rank, lp, wins, losses, winRate };
 }
 
+
+// creating test rows. Eventually these will be created using information pulled from an API.
 const rows = [
   createData("Morkster", "Emerald III", 39, 200, 188),
   createData("TVRT Shadowhawk", "Emerald IV", 0, 137, 160),
@@ -34,53 +37,58 @@ const rows = [
   createData("Manly Mufasa", "Silver III", 34, 3, 5),
 ];
 
+// styles for the headers
 const headerCellStyle = {
   borderBottom: "2px solid #34333d",
   textDecoration: "underline",
   fontWeight: "bold",
   backgroundColor: "#0e183b",
 };
-
+ 
+// styles for cells
 const cellStyle = {
   color: "#d5d6db",
   borderBottom: "1px solid #34333d",
 };
 
+// SELECTRANKIMAGE. If a players rank {string} includes the substring pertaining to their rank, then the path {string} to the cooresponding image will be returned
+
 function selectRankImage(rank) {
-  const imageDict = {
-    Iron: "./iron.webp",
-    Bronze: "./bronze.webp",
-    Silver: "./silver.webp",
-    Gold: "./gold.webp",
-    Platinum: "./platinum.webp",
-    Emerald: "./emerald.webp",
-    Diamond: "./diamond.webp",
-    Master: "./master.webp",
-    Grandmaster: "./grandmaster.webp",
-    Challenger: "./challenger.webp",
+  const imagePathDict = {
+    iron: "./iron.webp",
+    bronze: "./bronze.webp",
+    silver: "./silver.webp",
+    gold: "./gold.webp",
+    platinum: "./platinum.webp",
+    emerald: "./emerald.webp",
+    diamond: "./diamond.webp",
+    master: "./master.webp",
+    grandmaster: "./grandmaster.webp",
+    challenger: "./challenger.webp",
   };
 
+  // ex, if a players rank was Iron II, then imagePathDict.Iron would be returned
   switch (true) {
     case rank.toLowerCase().includes("iron"):
-      return imageDict.Iron;
+      return imagePathDict.iron;
     case rank.toLowerCase().includes("bronze"):
-      return imageDict.Bronze;
+      return imagePathDict.bronze;
     case rank.toLowerCase().includes("silver"):
-      return imageDict.Silver;
+      return imagePathDict.silver;
     case rank.toLowerCase().includes("gold"):
-      return imageDict.Gold;
+      return imagePathDict.gold;
     case rank.toLowerCase().includes("platinum"):
-      return imageDict.Platinum;
+      return imagePathDict.platinum;
     case rank.toLowerCase().includes("emerald"):
-      return imageDict.Emerald;
+      return imagePathDict.emerald;
     case rank.toLowerCase().includes("diamond"):
-      return imageDict.Diamond;
+      return imagePathDict.diamond;
     case rank.toLowerCase() === "master":
-      return imageDict.Master;
+      return imagePathDict.master;
     case rank.toLowerCase() === "grandmaster":
-      return imageDict.Grandmaster;
+      return imagePathDict.grandmaster;
     case rank.toLowerCase() === "challenger":
-      return imageDict.Challenger;
+      return imagePathDict.challenger;
     default:
       // Handle cases where no match is found
       return undefined;
@@ -89,6 +97,7 @@ function selectRankImage(rank) {
 
 export default function ResultsTable() {
   return (
+    // BOX TO CONTAIN THE TABLE, ALLOWING FOR RESPONSIVE DESIGN.
     <Box
       sx={{
         width: "100%",
@@ -104,6 +113,7 @@ export default function ResultsTable() {
           sx={{ minWidth: 650, backgroundColor: "#212422" }}
           aria-label="simple table"
         >
+          {/* TABLE HEAD: SUMMONERNAME, RANK, LP, WINS , LOSSES */}
           <TableHead>
             <TableRow>
               <TableCell sx={{ ...headerCellStyle, ...cellStyle }}>
@@ -142,6 +152,7 @@ export default function ResultsTable() {
             </TableRow>
           </TableHead>
 
+          {/* TABLE BODY, MAPPING PLAYER STATS TO ROWS */}
           <TableBody>
             {rows.map((row) => (
               <TableRow
