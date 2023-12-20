@@ -102,7 +102,7 @@ export default function ResultsTable() {
       sx={{
         width: "100%",
         margin: "10px auto",
-        "@media (min-width: 790px)": {
+        "@media (min-width: 808px)": {
           width: "50%",
           margin: "10px 0 10px auto",
         },

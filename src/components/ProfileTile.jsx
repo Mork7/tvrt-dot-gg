@@ -8,14 +8,13 @@ const fontColor = "#d5d6db";
 const backColor = "#212422";
 
 const smallScreenStyles = {
-  "@media (max-width: 790px)": {
+  "@media (max-width: 808px)": {
     flexDirection: "column",
     alignItems: "center",
     height: "auto",
     width: "auto",
     paddingLeft: "3rem",
-    paddingRight: "3rem"
-
+    paddingRight: "3rem",
   },
 };
 
@@ -47,12 +46,12 @@ export default function ProfileTile() {
           style={{
             height: "100px",
             width: "100px",
-            backgroundColor: "blue",
-            zIndex: 1, // Set zIndex to bring the div to the front
-            margin: "10px 0 0 10px",
+            zIndex: 1, // Set zIndex to bring the img to the front
+            marginTop: "10px",
+            marginLeft: "10px",
             borderRadius: "20%",
           }}
-        ></img>
+        />
         <Typography
           variant="h5"
           sx={{
@@ -60,6 +59,7 @@ export default function ProfileTile() {
             padding: "10px",
             margin: "10px 10px",
             fontWeight: 1000,
+            ...smallScreenStyles,
           }}
         >
           Morkster #TVRT
@@ -76,8 +76,8 @@ export default function ProfileTile() {
       >
         &nbsp;&nbsp;Ranked Solo
       </Typography>
-      <Box sx={{ display: "flex", marginLeft: "5px", ...smallScreenStyles }}>
-        <img src="./emerald.webp" alt="rank" style={{ width: "130px" }} />
+      <Box sx={{ display: "flex", ...smallScreenStyles, justifyContent: "space-between" }}>
+        <img src="./emerald.webp" alt="rank" style={{ width: "130px", }}/>
         <Typography
           variant="h5"
           sx={{
@@ -86,43 +86,46 @@ export default function ProfileTile() {
             fontWeight: 800,
             marginTop: "25px",
             padding: "10px",
-            "@media (max-width: 790px)": {
-              margin: "0 0 0 0"
-              },
+            "@media (max-width: 808px)": {
+              margin: "0 0 0 0",
+            },
           }}
         >
-          Emerald 3
+          Emerald 3 {/* This will eventually be dynamically set */}
+          <Typography sx={{fontSize: 10, paddingLeft: "40%"}}>
+            39 LP
+          </Typography>
         </Typography>
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
             ...smallScreenStyles,
+            paddingRight: "20px"
           }}
         >
           <Typography
             sx={{
               margin: "40px 0 0 10px",
               color: fontColor,
-              "@media (max-width: 790px)": {
-              margin: "5px 0 0 0"
+              "@media (max-width: 808px)": {
+                margin: "5px 0 0 0",
               },
             }}
           >
-            {" "}
-            200W 188L
+            200W 188L {/* This will eventually be dynamically set */}
           </Typography>
           <Typography
             sx={{
               color: fontColor,
               fontSize: 10,
               marginLeft: "10px",
-              "@media (max-width: 790px)": {
+              "@media (max-width: 808px)": {
                 margin: "5px 0 5px 0",
               },
             }}
           >
-            Win Rate 52%
+            Win Rate 52% {/* This will eventually be dynamically set */}
           </Typography>
         </Box>
       </Box>
