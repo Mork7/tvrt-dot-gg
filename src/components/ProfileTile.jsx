@@ -33,6 +33,7 @@ export default function ProfileTile() {
       }}
     >
       <Box
+        id="summoner-name-container"
         component="section"
         sx={{
           p: 0,
@@ -42,17 +43,19 @@ export default function ProfileTile() {
         }}
       >
         <img
+          id="profile-icon"
           src="./profileIcon665.webp"
           style={{
             height: "100px",
             width: "100px",
             zIndex: 1, // Set zIndex to bring the img to the front
             marginTop: "10px",
-            marginLeft: "10px",
+            marginLeft: window.innerWidth <= 808 ? "0px" : "10px",
             borderRadius: "20%",
           }}
         />
         <Typography
+          id="summoner-name"
           variant="h5"
           sx={{
             color: fontColor,
@@ -62,22 +65,39 @@ export default function ProfileTile() {
             ...smallScreenStyles,
           }}
         >
-          Morkster #TVRT
+          Morkster
+        </Typography>
+        <Typography
+          id="tag-line"
+          variant="h5"
+          sx={{
+            color: "grey",
+            padding: "10px",
+            margin: "10px 10px",
+            fontWeight: 900,
+            ...smallScreenStyles,
+            "@media (max-width: 808px)": {
+              padding: "0",
+              margin: "0",
+            },
+          }}
+        >
+          #TVRT
         </Typography>
       </Box>
-      <Typography
-        variant="h6"
+      <hr style={{ width: "100%", marginBottom: "0px" }} />
+      <Box
         sx={{
-          paddingTop: "15px",
-          paddingBottom: "10px",
-          borderBottom: "1px solid #34333d",
-          color: "#d5d6db",
+          display: "flex",
+          ...smallScreenStyles,
+          justifyContent: "space-between",
         }}
       >
-        &nbsp;&nbsp;Ranked Solo
-      </Typography>
-      <Box sx={{ display: "flex", ...smallScreenStyles, justifyContent: "space-between" }}>
-        <img src="./emerald.webp" alt="rank" style={{ width: "130px", }}/>
+        <img
+          src="./emerald.webp"
+          alt="rank"
+          style={{ width: window.innerWidth <= 808 ? "115px" : "130px" }}
+        />
         <Typography
           variant="h5"
           sx={{
@@ -92,7 +112,7 @@ export default function ProfileTile() {
           }}
         >
           Emerald 3 {/* This will eventually be dynamically set */}
-          <Typography sx={{fontSize: 10, paddingLeft: "40%"}}>
+          <Typography sx={{ fontSize: 10, paddingLeft: "40%" }}>
             39 LP
           </Typography>
         </Typography>
@@ -101,7 +121,7 @@ export default function ProfileTile() {
             display: "flex",
             flexDirection: "column",
             ...smallScreenStyles,
-            paddingRight: "20px"
+            paddingRight: "20px",
           }}
         >
           <Typography
