@@ -13,8 +13,8 @@ const smallScreenStyles = {
     alignItems: "center",
     height: "auto",
     width: "auto",
-    paddingLeft: "3rem",
-    paddingRight: "3rem",
+    paddingLeft: "2rem",
+    paddingRight: "2rem",
   },
 };
 
@@ -23,7 +23,7 @@ export default function ProfileTile() {
     <Paper
       sx={{
         height: "100%",
-        width: "500px",
+        width: "425px", // this will be set dynamically according to summoner name length. There is a max char limit for names I just don't know it yet.
         backgroundColor: backColor,
         margin: "10px 10px auto ",
         display: "flex",
