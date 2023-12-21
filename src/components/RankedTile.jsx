@@ -30,7 +30,7 @@ export default function RankedTile() {
         }}
       >
         Emerald 3 {/* This will eventually be dynamically set */}
-        <Typography sx={{ fontSize: 10, paddingLeft: "40%" }}>39 LP</Typography>
+        <Typography sx={{ fontSize: 10, paddingLeft: "40%" }}>63 LP</Typography>
       </Typography>
       <Box
         sx={{
@@ -49,7 +49,7 @@ export default function RankedTile() {
             },
           }}
         >
-          200W 188L {/* This will eventually be dynamically set */}
+          201W 188L {/* This will eventually be dynamically set */}
         </Typography>
         <Typography
           sx={{

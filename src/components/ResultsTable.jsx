@@ -21,7 +21,7 @@ function createData(name, rank, lp, wins, losses) {
 
 // creating test rows. Eventually these will be created using information pulled from an API.
 const rows = [
-  createData("Morkster", "Emerald III", 39, 200, 188),
+  createData("Morkster", "Emerald III", 63, 201, 188),
   createData("TVRT Shadowhawk", "Emerald IV", 0, 137, 160),
   createData("TVRT Gwegg", "Gold II", 8, 6, 3),
   createData("TVRT Verax", "Platinum I", 49, 164, 157),
