@@ -1,13 +1,36 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/system/Box";
-import { commonProfileTileStyles } from '../commonProfileTileStyles';
+import { useEffect, useState } from 'react'
+import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 
-export default function RankedTile() {
+export default function RankedTile(currentPlayer) {
+
+  useEffect(() => {
+    if (currentPlayer && currentPlayer[0]) {
+      setRank(currentPlayer[0].rank);
+      setWinLossRatio(currentPlayer[0].winLossRatio);
+      setWinPercentage(currentPlayer[0].winPercentage);
+    }
+  }, [currentPlayer]);
+
+  // Initialize the state with an empty string if currentPlayer is not available
+  const initialRank =
+    currentPlayer && currentPlayer[0] ? currentPlayer[0].rank : "";
+  const [rank, setRank] = useState(initialRank);
+
+  const initialWinLoss = 
+  currentPlayer && currentPlayer[0] ? currentPlayer[0].winLossRatio : "";
+  const [ winLossRatio, setWinLossRatio ] = useState(initialWinLoss);
+
+  const initialWinPercentage = 
+  currentPlayer && currentPlayer[0] ? currentPlayer[0].winPercentage : "";
+  const [ winPercentage, setWinPercentage ] = useState(initialWinPercentage);
+
   return (
     <Box
       sx={{
         display: "flex",
-        ...commonProfileTileStyles.smallScreenStyles,
+        ...commonSmallScreenStyles.smallScreenStyles,
         justifyContent: "space-between",
       }}
     >
@@ -20,7 +43,7 @@ export default function RankedTile() {
         variant="h5"
         sx={{
           justifyContent: "center",
-          color: commonProfileTileStyles.fontColor,
+          color: commonSmallScreenStyles.fontColor,
           fontWeight: 800,
           marginTop: "25px",
           padding: "10px",
@@ -29,31 +52,31 @@ export default function RankedTile() {
           },
         }}
       >
-        Emerald 3 {/* This will eventually be dynamically set */}
+        {rank}
         <Typography sx={{ fontSize: 10, paddingLeft: "40%" }}>63 LP</Typography>
       </Typography>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
-          ...commonProfileTileStyles.smallScreenStyles,
+          ...commonSmallScreenStyles.smallScreenStyles,
           paddingRight: "20px",
         }}
       >
         <Typography
           sx={{
             margin: "40px 0 0 10px",
-            color: commonProfileTileStyles.fontColor,
+            color: commonSmallScreenStyles.fontColor,
             "@media (max-width: 808px)": {
               margin: "5px 0 0 0",
             },
           }}
         >
-          201W 188L {/* This will eventually be dynamically set */}
+          {winLossRatio}
         </Typography>
         <Typography
           sx={{
-            color: commonProfileTileStyles.fontColor,
+            color: commonSmallScreenStyles.fontColor,
             fontSize: 10,
             marginLeft: "10px",
             "@media (max-width: 808px)": {
@@ -61,7 +84,7 @@ export default function RankedTile() {
             },
           }}
         >
-          Win Rate 52% {/* This will eventually be dynamically set */}
+          {winPercentage}
         </Typography>
       </Box>
     </Box>

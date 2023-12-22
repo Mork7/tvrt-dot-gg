@@ -3,11 +3,12 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import RankedTile from "./RankedTile";
 import SummonerNameTile from "./SummonerNameTile";
-import { commonProfileTileStyles } from "../commonProfileTileStyles";
+import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 
 const backColor = "#212422";
 
-export default function ProfileTile() {
+export default function ProfileTile(currentPlayer) {
+
   return (
     <Paper
       sx={{
@@ -18,12 +19,12 @@ export default function ProfileTile() {
         display: "flex",
         flexDirection: "column",
         // Apply styles for smaller screens using @media query
-        ...commonProfileTileStyles.smallScreenStyles,
+        ...commonSmallScreenStyles.smallScreenStyles,
       }}
     >
-      <SummonerNameTile />
+      <SummonerNameTile {...currentPlayer} />
       <hr style={{ width: "100%", marginBottom: "0px" }} />
-      <RankedTile />
+      <RankedTile {...currentPlayer}/>
       <ButtonGroup
         variant="outlined"
         aria-label="outlined button group"

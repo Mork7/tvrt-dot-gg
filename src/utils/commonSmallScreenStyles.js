@@ -1,5 +1,5 @@
 // styles.js
-export const commonProfileTileStyles = {
+export const commonSmallScreenStyles = {
     fontColor: "#d5d6db",
     smallScreenStyles: {
       "@media (max-width: 808px)": {
