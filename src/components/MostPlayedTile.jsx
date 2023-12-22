@@ -8,6 +8,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import React from "react";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
 
 export default function MostPlayed({ mostPlayedChamps }) {
   if (!mostPlayedChamps || mostPlayedChamps.length === 0) {
@@ -18,11 +20,12 @@ export default function MostPlayed({ mostPlayedChamps }) {
     <Paper
       sx={{
         height: "100%",
-        width: "425px", // this will be set dynamically according to summoner name length. There is a max char limit for names I just don't know it yet.
+        width: "425px",
         backgroundColor: "#212422",
-        margin: "10px 10px auto ",
+        margin: "10px auto", // Center the Paper horizontally
         display: "flex",
         flexDirection: "column",
+        alignItems: "center", // Center the content vertically
         // Apply styles for smaller screens using @media query
         ...commonSmallScreenStyles.smallScreenStyles,
       }}
@@ -31,15 +34,33 @@ export default function MostPlayed({ mostPlayedChamps }) {
         <List key="header" component="nav" aria-label="mailbox folders">
           <ListItem>
             <ListItemText>
-              <Typography sx={{color: "#d5d6db", fontSize: "20px", fontWeight: 600}}>Most Played Champions</Typography>
+              <Typography
+                sx={{ color: "#d5d6db", fontSize: "20px", fontWeight: 600 }}
+              >
+                Most Played Champions
+              </Typography>
             </ListItemText>
           </ListItem>
           {mostPlayedChamps.map((champ) => (
             <React.Fragment key={champ}>
-              <ListItem>
-                <ListItemText sx={{ color: "#d5d6db" }} primary={champ} />
-              </ListItem>
-              <Divider />
+              <ListItemAvatar sx={{ display: "flex", justifyContent: "center" }}>
+                <Avatar>
+                  <img
+                    src={`./champion-icons/${champ.replace(/\s/g, "")}.webp`} // no spaces
+                    alt="champ-icon"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      borderRadius: "50%",
+                    }}
+                  />
+                </Avatar>
+                <ListItemText sx={{ marginLeft: ".5rem" }}>
+                  <Typography>{champ}</Typography>
+                </ListItemText>
+              </ListItemAvatar>
+              <Divider sx={{margin: "5px"}}/>
             </React.Fragment>
           ))}
         </List>
