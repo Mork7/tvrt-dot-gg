@@ -6,8 +6,6 @@ import SummonerNameTile from "./SummonerNameTile";
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 // import { useEffect, useState } from "react";
 
-const backColor = "#212422";
-
 export default function ProfileTile(currentPlayer) {
 
   return (
@@ -15,7 +13,7 @@ export default function ProfileTile(currentPlayer) {
       sx={{
         height: "100%",
         width: "425px", // this will be set dynamically according to summoner name length. There is a max char limit for names I just don't know it yet.
-        backgroundColor: backColor,
+        backgroundColor: "#212422",
         margin: "10px 10px auto ",
         display: "flex",
         flexDirection: "column",
