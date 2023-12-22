@@ -1,30 +1,81 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/system/Box";
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 
-export default function RankedTile(currentPlayer) {
+function selectRankImage(rank) {
+  const imagePathDict = {
+    iron: "./iron.webp",
+    bronze: "./bronze.webp",
+    silver: "./silver.webp",
+    gold: "./gold.webp",
+    platinum: "./platinum.webp",
+    emerald: "./emerald.webp",
+    diamond: "./diamond.webp",
+    master: "./master.webp",
+    grandmaster: "./grandmaster.webp",
+    challenger: "./challenger.webp",
+  };
+  // ex, if a players rank was Iron II, then imagePathDict.Iron would be returned
+  switch (true) {
+    case rank.toLowerCase().includes("iron"):
+      return imagePathDict.iron;
+    case rank.toLowerCase().includes("bronze"):
+      return imagePathDict.bronze;
+    case rank.toLowerCase().includes("silver"):
+      return imagePathDict.silver;
+    case rank.toLowerCase().includes("gold"):
+      return imagePathDict.gold;
+    case rank.toLowerCase().includes("platinum"):
+      return imagePathDict.platinum;
+    case rank.toLowerCase().includes("emerald"):
+      return imagePathDict.emerald;
+    case rank.toLowerCase().includes("diamond"):
+      return imagePathDict.diamond;
+    case rank.toLowerCase().includes("master"):
+      return imagePathDict.master;
+    case rank.toLowerCase().includes("grandmaster"):
+      return imagePathDict.grandmaster;
+    case rank.toLowerCase().includes("challenger"):
+      return imagePathDict.challenger;
+    default:
+      // Handle cases where no match is found
+      return undefined;
+  }
+}
+
+export default function RankedTile(currentPlayerData) {
+  const currentPlayer = currentPlayerData[0];
 
   useEffect(() => {
-    if (currentPlayer && currentPlayer[0]) {
-      setRank(currentPlayer[0].rank);
-      setWinLossRatio(currentPlayer[0].winLossRatio);
-      setWinPercentage(currentPlayer[0].winPercentage);
+    if (currentPlayer && currentPlayerData[0]) {
+      setRank(currentPlayer.rank);
+      setWinLossRatio(currentPlayer.winLossRatio);
+      setWinPercentage(currentPlayer.winPercentage);
+      setLP(currentPlayer.lp);
     }
-  }, [currentPlayer]);
+  }, [currentPlayer, currentPlayerData]);
 
   // Initialize the state with an empty string if currentPlayer is not available
   const initialRank =
-    currentPlayer && currentPlayer[0] ? currentPlayer[0].rank : "";
+    currentPlayer && currentPlayerData[0] ? currentPlayer.rank : "";
   const [rank, setRank] = useState(initialRank);
 
-  const initialWinLoss = 
-  currentPlayer && currentPlayer[0] ? currentPlayer[0].winLossRatio : "";
-  const [ winLossRatio, setWinLossRatio ] = useState(initialWinLoss);
+  const initialWinLoss =
+    currentPlayer && currentPlayerData[0] ? currentPlayer.winLossRatio : "";
+  const [winLossRatio, setWinLossRatio] = useState(initialWinLoss);
 
-  const initialWinPercentage = 
-  currentPlayer && currentPlayer[0] ? currentPlayer[0].winPercentage : "";
-  const [ winPercentage, setWinPercentage ] = useState(initialWinPercentage);
+  const initialWinPercentage =
+    currentPlayer && currentPlayerData[0] ? currentPlayer.winPercentage : "";
+  const [winPercentage, setWinPercentage] = useState(initialWinPercentage);
+
+  const initialLP =
+    currentPlayer && currentPlayerData[0] ? currentPlayer.lp : "";
+  const [LP, setLP] = useState(initialLP);
+
+  if (!currentPlayer) {
+    return null; // or return a loading state
+  }
 
   return (
     <Box
@@ -35,7 +86,7 @@ export default function RankedTile(currentPlayer) {
       }}
     >
       <img
-        src="./emerald.webp"
+        src={selectRankImage(currentPlayer.rank)}
         alt="rank"
         style={{ width: window.innerWidth <= 808 ? "115px" : "130px" }}
       />
@@ -53,7 +104,10 @@ export default function RankedTile(currentPlayer) {
         }}
       >
         {rank}
-        <Typography sx={{ fontSize: 10, paddingLeft: "40%" }}>63 LP</Typography>
+        <Typography sx={{ fontSize: 10, paddingLeft: "40%" }}>
+          {" "}
+          {LP + " LP"}
+        </Typography>
       </Typography>
       <Box
         sx={{
@@ -72,7 +126,7 @@ export default function RankedTile(currentPlayer) {
             },
           }}
         >
-          {winLossRatio}
+          {winLossRatio + " W/L"}
         </Typography>
         <Typography
           sx={{

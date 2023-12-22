@@ -3,18 +3,30 @@ import Box from "@mui/system/Box";
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 import { useState, useEffect } from "react";
 
-export default function SummonerNameTile(currentPlayer) {
+export default function SummonerNameTile(currentPlayerData) {
   
+  const currentPlayer = currentPlayerData[0];
+
   useEffect(() => {
-    if (currentPlayer && currentPlayer[0]) {
-      setUsername(currentPlayer[0].username);
+    if (currentPlayer && currentPlayerData[0]) {
+      const summonerNameArray = currentPlayer.username.split("-");
+      setSummonerName(summonerNameArray[0]);
+      setTagLine(summonerNameArray[1]);
     }
-  }, [currentPlayer]);
+  }, [currentPlayer, currentPlayerData]);
 
   // Initialize the state with an empty string if currentPlayer is not available
-  const initialUsername =
-    currentPlayer && currentPlayer[0] ? currentPlayer[0].username : "";
-  const [username, setUsername] = useState(initialUsername);
+  const initialSummonerName =
+    currentPlayer && currentPlayerData[0] ? currentPlayer.username : "";
+  const [summonerName, setSummonerName] = useState(initialSummonerName);
+
+  const initialTagLine =
+    currentPlayer && currentPlayerData[0] ? currentPlayer.username : "";
+  const [tagLine, setTagLine] = useState(initialTagLine);
+
+  if (!currentPlayer || !summonerName) {
+    return null; // or return a loading state
+  }
 
   return (
     <Box
@@ -50,7 +62,7 @@ export default function SummonerNameTile(currentPlayer) {
           ...commonSmallScreenStyles.smallScreenStyles,
         }}
       >
-        {username}
+        {summonerName}
       </Typography>
       <Typography
         id="tag-line"
@@ -67,7 +79,7 @@ export default function SummonerNameTile(currentPlayer) {
           },
         }}
       >
-        #TVRT
+        {"#" + tagLine}
       </Typography>
     </Box>
   );

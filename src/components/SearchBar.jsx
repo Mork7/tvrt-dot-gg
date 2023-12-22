@@ -155,6 +155,7 @@ export default function SearchBar() {
     </Menu>
   );
 
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">

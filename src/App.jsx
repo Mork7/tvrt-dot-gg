@@ -47,7 +47,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const playerData = await getPlayerRank('Morkster', 'TVRT');
+        const playerData = await getPlayerRank('TVRT GWegg', 'NA1');
         // console.log(playerData);
         // Use playerRank data as needed
         setCurrentPlayer(playerData);
@@ -70,7 +70,7 @@ function App() {
         width: "100%"
       }}
     >
-      <SearchBar />
+      <SearchBar {...currentPlayer}/>
       <Box // this is the container for the app body
         sx={{
           ...responsiveSettings,
