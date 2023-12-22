@@ -1,13 +1,10 @@
 import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
-import ButtonGroup from "@mui/material/ButtonGroup";
 import RankedTile from "./RankedTile";
 import SummonerNameTile from "./SummonerNameTile";
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 // import { useEffect, useState } from "react";
 
 export default function ProfileTile(currentPlayer) {
-
   return (
     <Paper
       sx={{
@@ -23,15 +20,7 @@ export default function ProfileTile(currentPlayer) {
     >
       <SummonerNameTile {...currentPlayer} />
       <hr style={{ width: "100%", marginBottom: "0px" }} />
-      <RankedTile {...currentPlayer}/>
-      <ButtonGroup
-        variant="outlined"
-        aria-label="outlined button group"
-        sx={{ justifyContent: "center", margin: "auto", marginBottom: "10px" }}
-      >
-        <Button>Update</Button>
-        <Button>Tier Graph</Button>
-      </ButtonGroup>
+      <RankedTile {...currentPlayer} />
     </Paper>
   );
 }

@@ -2,16 +2,18 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/system/Box";
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 import { useState, useEffect } from "react";
+import Chip from "@mui/material/Chip";
+import Stack from "@mui/material/Stack";
 
 export default function SummonerNameTile(currentPlayerData) {
-  
   const currentPlayer = currentPlayerData[0];
 
   useEffect(() => {
     if (currentPlayer && currentPlayerData[0]) {
       const summonerNameArray = currentPlayer.username.split("-");
-      setSummonerName(summonerNameArray[0]);
-      setTagLine(summonerNameArray[1]);
+      setSummonerName(summonerNameArray[0][0].toLocaleUpperCase() + summonerNameArray[0].substring(1));
+      setTagLine(summonerNameArray[1].toUpperCase());
+      setPastRanks(currentPlayer.pastRanks);
     }
   }, [currentPlayer, currentPlayerData]);
 
@@ -24,7 +26,11 @@ export default function SummonerNameTile(currentPlayerData) {
     currentPlayer && currentPlayerData[0] ? currentPlayer.username : "";
   const [tagLine, setTagLine] = useState(initialTagLine);
 
-  if (!currentPlayer || !summonerName) {
+  const initialPastRanks =
+    currentPlayer && currentPlayerData[0] ? currentPlayer.pastRanks : [];
+  const [pastRanks, setPastRanks] = useState(initialPastRanks);
+
+  if (!currentPlayer || !summonerName || !pastRanks) {
     return null; // or return a loading state
   }
 
@@ -39,6 +45,13 @@ export default function SummonerNameTile(currentPlayerData) {
         ...commonSmallScreenStyles.smallScreenStyles,
       }}
     >
+      <Box>
+        <Stack direction="row" spacing={1} sx={{marginTop: "10px"}}>
+          {pastRanks.map((pastRank) => (
+            <Chip label={pastRank} variant="outlined" key={pastRank} />
+          ))}
+        </Stack>
+      </Box>
       <Typography
         id="summoner-name"
         variant="h5"
