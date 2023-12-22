@@ -153,7 +153,7 @@ export default function SearchBar({ onSearch }) {
           >
             TVRT.GG
           </Typography>
-          <RegionSelect/>
+          <RegionSelect />
           <Search>
             <StyledInputBase
               sx={{ bgcolor: "#47474" }}

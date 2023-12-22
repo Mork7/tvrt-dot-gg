@@ -79,10 +79,10 @@ function App() {
         ) : (
           <Box
             sx={{
-              marginTop: "auto",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
+              padding: "25px"
             }}
           >
             <Typography sx={{ alignContent: "center" }}>
