@@ -186,13 +186,13 @@ export default function SearchBar() {
             <StyledInputBase
               sx={{ bgcolor: "#47474" }}
               placeholder="Summoner Name"
-              id = "input-field"
+              id = "summoner-name-input"
               inputProps={{ "aria-label": "search" }}
             />
               <StyledInputBase
               sx={{ bgcolor: "#47474" }}
               placeholder="Tag Line"
-              id = "input-field"
+              id = "tag-line-input"
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
