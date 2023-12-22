@@ -1,7 +1,7 @@
 // api.js
 import axios from 'axios';
 
-const API_KEY = '864048d978msh08b059cd6e28e22p12ed46jsncd75686af2ec';
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const api = axios.create({
   baseURL: 'https://league-of-legends-galore.p.rapidapi.com',
