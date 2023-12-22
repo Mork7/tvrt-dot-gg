@@ -27,7 +27,7 @@ TVRT-dot-gg is a personal and learning project for a League of Legends app that 
 
 ## Usage
 
-1. Search yourself or another player via format "SummonerName - Tagline".
+1. Search yourself or another player via SummonerName and Tagline.
 
 That's it! TVRT-dot-gg is designed to be simple and intuitive for all your player stats needs.
 
