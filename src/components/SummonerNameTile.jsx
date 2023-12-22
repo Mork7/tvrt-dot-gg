@@ -39,18 +39,6 @@ export default function SummonerNameTile(currentPlayerData) {
         ...commonSmallScreenStyles.smallScreenStyles,
       }}
     >
-      <img
-        id="profile-icon"
-        src="./profileIcon665.webp"
-        style={{
-          height: "100px",
-          width: "100px",
-          zIndex: 1, // Set zIndex to bring the img to the front
-          marginTop: "10px",
-          marginLeft: window.innerWidth <= 808 ? "0px" : "10px",
-          borderRadius: "20%",
-        }}
-      />
       <Typography
         id="summoner-name"
         variant="h5"

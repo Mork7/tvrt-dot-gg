@@ -14,7 +14,9 @@ export default function RegionSelect() {
   };
 
   return (
-    <Box sx={{ minWidth: 120 }}>
+    <Box sx={{ minWidth: 120, "@media (max-width: 808px)": {
+        marginRight: "10px"
+    }, }}>
       <FormControl fullWidth>
         <InputLabel id="region-select-label">
           Region

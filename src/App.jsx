@@ -5,7 +5,7 @@ import ProfileTile from "./components/ProfileTile";
 import Box from "@mui/system/Box";
 import { getPlayerRank } from "./utils/getPlayerApi";
 import { useEffect } from "react";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import MostPlayed from "./components/MostPlayedTile";
 
 const responsiveSettings = {
@@ -77,7 +77,21 @@ function App() {
             <MostPlayed mostPlayedChamps={currentPlayer[0].champsUsed} />
           </Box>
         ) : (
-          <CircularProgress sx={{ margin: "auto", color: "grey" }} />
+          <Box
+            sx={{
+              marginTop: "auto",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
+            <Typography sx={{ alignContent: "center" }}>
+              Searching for summoner... If you haven&apos;t input the Summoner Name
+              and Tag Line please do so and hit search!
+            </Typography>
+
+            <CircularProgress sx={{ margin: "auto", color: "grey" }} />
+          </Box>
         )}
         <ResultsTable />
       </Box>
