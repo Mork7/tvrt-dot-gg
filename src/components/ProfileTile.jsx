@@ -3,27 +3,27 @@ import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import RankedTile from "./RankedTile";
 import SummonerNameTile from "./SummonerNameTile";
-import { commonProfileTileStyles } from "../commonProfileTileStyles";
+import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
+// import { useEffect, useState } from "react";
 
-const backColor = "#212422";
+export default function ProfileTile(currentPlayer) {
 
-export default function ProfileTile() {
   return (
     <Paper
       sx={{
         height: "100%",
         width: "425px", // this will be set dynamically according to summoner name length. There is a max char limit for names I just don't know it yet.
-        backgroundColor: backColor,
+        backgroundColor: "#212422",
         margin: "10px 10px auto ",
         display: "flex",
         flexDirection: "column",
         // Apply styles for smaller screens using @media query
-        ...commonProfileTileStyles.smallScreenStyles,
+        ...commonSmallScreenStyles.smallScreenStyles,
       }}
     >
-      <SummonerNameTile />
+      <SummonerNameTile {...currentPlayer} />
       <hr style={{ width: "100%", marginBottom: "0px" }} />
-      <RankedTile />
+      <RankedTile {...currentPlayer}/>
       <ButtonGroup
         variant="outlined"
         aria-label="outlined button group"

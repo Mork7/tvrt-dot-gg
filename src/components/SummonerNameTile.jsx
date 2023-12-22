@@ -1,8 +1,33 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/system/Box";
-import { commonProfileTileStyles } from "../commonProfileTileStyles";
+import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
+import { useState, useEffect } from "react";
 
-export default function SummonerNameTile() {
+export default function SummonerNameTile(currentPlayerData) {
+  
+  const currentPlayer = currentPlayerData[0];
+
+  useEffect(() => {
+    if (currentPlayer && currentPlayerData[0]) {
+      const summonerNameArray = currentPlayer.username.split("-");
+      setSummonerName(summonerNameArray[0]);
+      setTagLine(summonerNameArray[1]);
+    }
+  }, [currentPlayer, currentPlayerData]);
+
+  // Initialize the state with an empty string if currentPlayer is not available
+  const initialSummonerName =
+    currentPlayer && currentPlayerData[0] ? currentPlayer.username : "";
+  const [summonerName, setSummonerName] = useState(initialSummonerName);
+
+  const initialTagLine =
+    currentPlayer && currentPlayerData[0] ? currentPlayer.username : "";
+  const [tagLine, setTagLine] = useState(initialTagLine);
+
+  if (!currentPlayer || !summonerName) {
+    return null; // or return a loading state
+  }
+
   return (
     <Box
       id="summoner-name-container"
@@ -11,7 +36,7 @@ export default function SummonerNameTile() {
         p: 0,
         display: "flex",
         flexDirection: "row",
-        ...commonProfileTileStyles.smallScreenStyles,
+        ...commonSmallScreenStyles.smallScreenStyles,
       }}
     >
       <img
@@ -30,14 +55,14 @@ export default function SummonerNameTile() {
         id="summoner-name"
         variant="h5"
         sx={{
-          color: commonProfileTileStyles.fontColor,
+          color: commonSmallScreenStyles.fontColor,
           padding: "10px",
           margin: "10px 10px",
           fontWeight: 1000,
-          ...commonProfileTileStyles.smallScreenStyles,
+          ...commonSmallScreenStyles.smallScreenStyles,
         }}
       >
-        Morkster
+        {summonerName}
       </Typography>
       <Typography
         id="tag-line"
@@ -47,14 +72,14 @@ export default function SummonerNameTile() {
           padding: "10px",
           margin: "10px 10px",
           fontWeight: 900,
-          ...commonProfileTileStyles.smallScreenStyles,
+          ...commonSmallScreenStyles.smallScreenStyles,
           "@media (max-width: 808px)": {
             padding: "0",
             margin: "0",
           },
         }}
       >
-        #TVRT
+        {"#" + tagLine}
       </Typography>
     </Box>
   );

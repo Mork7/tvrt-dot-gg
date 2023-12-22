@@ -15,6 +15,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import Button from '@mui/material/Button';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -80,6 +81,7 @@ export default function SearchBar() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -155,6 +157,7 @@ export default function SearchBar() {
     </Menu>
   );
 
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -182,10 +185,18 @@ export default function SearchBar() {
             </SearchIconWrapper>
             <StyledInputBase
               sx={{ bgcolor: "#47474" }}
-              placeholder="Search summoner…"
+              placeholder="Summoner Name"
+              id = "summoner-name-input"
+              inputProps={{ "aria-label": "search" }}
+            />
+              <StyledInputBase
+              sx={{ bgcolor: "#47474" }}
+              placeholder="Tag Line"
+              id = "tag-line-input"
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+          <Button variant="contained" sx={{bgcolor: "grey", "&:hover": {bgcolor: "#2c5699"}}}>Search</Button>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
