@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,7 +12,8 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import Button from "@mui/material/Button";
-import RegionSelect from "./RegionDropDown";
+import RegionSelect from "./RegionSelect";
+import PropTypes from 'prop-types';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -44,9 +45,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchBar() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+// eslint-disable-next-line react/prop-types
+export default function SearchBar({ onSearch }) {
+
+  const [ summonerName, setSummonerName ] = useState('');
+  const [ tagLine, setTagLine ] = useState('');
+
+
+  function handleOnSearch() {
+    onSearch( {summonerName, tagLine } )
+  }
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -149,17 +160,20 @@ export default function SearchBar() {
               placeholder="Summoner Name"
               id="summoner-name-input"
               inputProps={{ "aria-label": "search" }}
+              onChange={(e) => setSummonerName(e.target.value)}
             />
             <StyledInputBase
               sx={{ bgcolor: "#47474" }}
               placeholder="Tag Line"
               id="tag-line-input"
               inputProps={{ "aria-label": "search" }}
+              onChange={(e) => setTagLine(e.target.value)}
             />
           </Search>
           <Button
             variant="contained"
             sx={{ bgcolor: "#2c5699", "&:hover": { bgcolor: "#1c3763" } }}
+            onClick={handleOnSearch}
           >
             Search
           </Button>
@@ -199,3 +213,7 @@ export default function SearchBar() {
     </Box>
   );
 }
+
+SearchBar.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+};

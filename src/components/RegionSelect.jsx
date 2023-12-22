@@ -5,6 +5,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { InputLabel } from "@mui/material";
 
+// eslint-disable-next-line react/prop-types
 export default function RegionSelect() {
   const [region, setRegion] = useState("");
 

@@ -11,7 +11,7 @@ const api = axios.create({
   },
 });
 
-export const getPlayerRank = async (summonerName, tagLine, region = 'na') => {
+export const getPlayerRank = async (summonerName, tagLine, region) => {
   try {
     const response = await api.get('/api/getPlayerRank', {
       params: {

@@ -21,13 +21,25 @@ const responsiveSettings = {
 function App() {
   const [currentPlayer, setCurrentPlayer] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useState({
+    summonerName: "",
+    tagLine: "",
+  });
+
+  const handleSearch = ({ summonerName, tagLine }) => {
+    setSearchParams({ summonerName, tagLine });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const playerData = await getPlayerRank("Morkster", "TVRT");
-        setCurrentPlayer(playerData);
-        setIsLoading(false);
+        const { summonerName, tagLine } = searchParams;
+        if (summonerName && tagLine) {
+          const playerData = await getPlayerRank(summonerName, tagLine, "na");
+          setCurrentPlayer(playerData);
+          console.log(playerData);
+          setIsLoading(false);
+        }
       } catch (error) {
         // Handle error
         console.error(error);
@@ -35,7 +47,7 @@ function App() {
     };
 
     fetchData();
-  }, []);
+  }, [searchParams]);
 
   return (
     /* this is the container for the entire app */
@@ -44,10 +56,9 @@ function App() {
         background: "radial-gradient(circle, #333333, #242b42)",
         height: "100%",
         width: "100%",
-
       }}
     >
-      <SearchBar />
+      <SearchBar onSearch={handleSearch} />
       <Box // this is the container for the app body
         sx={{
           ...responsiveSettings,
@@ -55,7 +66,13 @@ function App() {
         }}
       >
         {!isLoading ? (
-          <Box sx={{display: "flex", flexDirection: "column", marginBottom: "auto"}}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              marginBottom: "auto",
+            }}
+          >
             <ProfileTile {...currentPlayer} />{" "}
             <MostPlayed mostPlayedChamps={currentPlayer[0].champsUsed} />
           </Box>
