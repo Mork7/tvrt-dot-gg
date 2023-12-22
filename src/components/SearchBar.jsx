@@ -81,6 +81,7 @@ export default function SearchBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu

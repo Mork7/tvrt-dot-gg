@@ -4,6 +4,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import RankedTile from "./RankedTile";
 import SummonerNameTile from "./SummonerNameTile";
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
+// import { useEffect, useState } from "react";
 
 const backColor = "#212422";
 
