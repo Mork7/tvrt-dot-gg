@@ -11,7 +11,10 @@ export default function SummonerNameTile(currentPlayerData) {
   useEffect(() => {
     if (currentPlayer && currentPlayerData[0]) {
       const summonerNameArray = currentPlayer.username.split("-");
-      setSummonerName(summonerNameArray[0][0].toLocaleUpperCase() + summonerNameArray[0].substring(1));
+      setSummonerName(
+        summonerNameArray[0][0].toLocaleUpperCase() +
+          summonerNameArray[0].substring(1)
+      );
       setTagLine(summonerNameArray[1].toUpperCase());
       setPastRanks(currentPlayer.pastRanks);
     }
@@ -41,17 +44,26 @@ export default function SummonerNameTile(currentPlayerData) {
       sx={{
         p: 0,
         display: "flex",
-        flexDirection: "row",
+        flexDirection: "column",
+        alignItems: "center",
         ...commonSmallScreenStyles.smallScreenStyles,
       }}
     >
-      <Box>
-        <Stack direction="row" spacing={1} sx={{marginTop: "10px"}}>
-          {pastRanks.map((pastRank) => (
-            <Chip label={pastRank} variant="outlined" key={pastRank} />
-          ))}
-        </Stack>
-      </Box>
+      <Stack
+        direction="row"
+        spacing={1}
+        sx={{
+          marginTop: "10px",
+          "@media (max-width: 808px)": {
+            flexDirection: "column",
+            alignItems: "center",
+          },
+        }}
+      >
+        {pastRanks.map((pastRank) => (
+          <Chip label={pastRank} variant="outlined" key={pastRank} />
+        ))}
+      </Stack>
       <Typography
         id="summoner-name"
         variant="h5"
