@@ -57,7 +57,7 @@ export default function MostPlayed({ mostPlayedChamps }) {
                   />
                 </Avatar>
                 <ListItemText sx={{ marginLeft: ".5rem" }}>
-                  <Typography>{champ}</Typography>
+                  <Typography sx={{color: "#d5d6db" }}>{champ}</Typography>
                 </ListItemText>
               </ListItemAvatar>
               <Divider sx={{margin: "5px"}}/>

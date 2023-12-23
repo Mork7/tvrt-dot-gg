@@ -3,7 +3,6 @@ import Box from "@mui/system/Box";
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 import { useState, useEffect } from "react";
 import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
 
 export default function SummonerNameTile(currentPlayerData) {
   const currentPlayer = currentPlayerData[0];
@@ -49,11 +48,12 @@ export default function SummonerNameTile(currentPlayerData) {
         ...commonSmallScreenStyles.smallScreenStyles,
       }}
     >
-      <Stack
-        direction="row"
-        spacing={1}
+      <Box
         sx={{
+          display: "flex",
+          flexDirection: "row",
           marginTop: "10px",
+          justifyContent: "space-evenly",
           "@media (max-width: 808px)": {
             flexDirection: "column",
             alignItems: "center",
@@ -61,9 +61,9 @@ export default function SummonerNameTile(currentPlayerData) {
         }}
       >
         {pastRanks.map((pastRank) => (
-          <Chip label={pastRank} variant="outlined" key={pastRank} />
+          <Chip label={pastRank} variant="outlined" key={pastRank} sx={{color: commonSmallScreenStyles.fontColor}}/>
         ))}
-      </Stack>
+      </Box>
       <Typography
         id="summoner-name"
         variant="h5"
