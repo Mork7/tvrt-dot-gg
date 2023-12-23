@@ -69,7 +69,7 @@ export default function SummonerNameTile(currentPlayerData) {
         variant="h5"
         sx={{
           color: commonSmallScreenStyles.fontColor,
-          padding: "10px",
+          paddingTop: "10px",
           margin: "10px 10px",
           fontWeight: 1000,
           ...commonSmallScreenStyles.smallScreenStyles,
@@ -82,7 +82,7 @@ export default function SummonerNameTile(currentPlayerData) {
         variant="h5"
         sx={{
           color: "grey",
-          padding: "10px",
+          // padding: "10px",
           margin: "10px 10px",
           fontWeight: 900,
           ...commonSmallScreenStyles.smallScreenStyles,
