@@ -5,6 +5,7 @@ import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 // import { useEffect, useState } from "react";
 
 export default function ProfileTile(currentPlayer) {
+
   return (
     <Paper
       sx={{
@@ -20,7 +21,7 @@ export default function ProfileTile(currentPlayer) {
     >
       <SummonerNameTile {...currentPlayer} />
       <hr style={{ width: "100%", marginBottom: "0px" }} />
-      <RankedTile {...currentPlayer} />
+      <RankedTile {...currentPlayer}/>
     </Paper>
   );
 }

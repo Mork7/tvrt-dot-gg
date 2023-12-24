@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
-import ResultsTable from "./components/ResultsTable";
+import FriendsTable from "./components/FriendsTable";
 import ProfileTile from "./components/ProfileTile";
 import Box from "@mui/system/Box";
 import { getPlayerRank } from "./utils/getPlayerApi";
@@ -25,18 +25,19 @@ function App() {
   const [searchParams, setSearchParams] = useState({
     summonerName: "",
     tagLine: "",
+    region: "na"
   });
 
-  const handleSearch = ({ summonerName, tagLine }) => {
-    setSearchParams({ summonerName, tagLine });
+  const handleSearch = ({ summonerName, tagLine, region }) => {
+    setSearchParams({ summonerName, tagLine, region });
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { summonerName, tagLine } = searchParams;
-        if (summonerName && tagLine) {
-          const playerData = await getPlayerRank(summonerName, tagLine, "na");
+        const { summonerName, tagLine, region } = searchParams;
+        if (summonerName && tagLine && region) {
+          const playerData = await getPlayerRank(summonerName, tagLine, region);
           setCurrentPlayer(playerData);
           console.log(playerData);
           setIsLoading(false);
@@ -74,7 +75,7 @@ function App() {
               marginBottom: "auto",
             }}
           >
-            <ProfileTile {...currentPlayer} />{" "}
+            <ProfileTile {...currentPlayer} region={searchParams.region}/>
             <MostPlayed mostPlayedChamps={currentPlayer[0].champsUsed} />
           </Box>
         ) : (
@@ -94,7 +95,7 @@ function App() {
             <CircularProgress sx={{ margin: "auto", color: "grey" }} />
           </Box>
         )}
-        <ResultsTable />
+        <FriendsTable />
       </Box>
     </Box>
   );

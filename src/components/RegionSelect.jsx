@@ -1,19 +1,16 @@
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import { InputLabel } from "@mui/material";
+
+
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles";
 import styled from "@emotion/styled";
 
 // eslint-disable-next-line react/prop-types
-export default function RegionSelect() {
+export default function RegionSelect(onRegionSelect) {
   const [region, setRegion] = useState("na");
 
-  const handleChange = (event) => {
-    setRegion(event.target.value);
-  };
+
+
 
   const StyledMenuItem = styled(MenuItem)`
   &&:hover {
@@ -24,7 +21,7 @@ export default function RegionSelect() {
     background-color: #454745;
   }
   `
-  
+
   return (
     <Box sx={{ minWidth: 120, "@media (max-width: 808px)": {
         marginRight: "10px"
