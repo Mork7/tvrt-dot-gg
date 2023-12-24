@@ -66,7 +66,9 @@ export default function SearchBar({ onSearch }) {
           <RegionSelect />
           <Search>
             <StyledInputBase
-              sx={{ bgcolor: "#47474" }}
+              sx={{
+                bgcolor: "#47474",
+              }}
               placeholder="Summoner Name"
               id="summoner-name-input"
               inputProps={{ "aria-label": "search" }}
@@ -82,7 +84,7 @@ export default function SearchBar({ onSearch }) {
           </Search>
           <Button
             variant="contained"
-            sx={{ bgcolor: "#2c5699", "&:hover": { bgcolor: "#1c3763" }}}
+            sx={{ bgcolor: "#2c5699", "&:hover": { bgcolor: "#1c3763" } }}
             onClick={handleOnSearch}
           >
             Search
