@@ -82,7 +82,7 @@ export default function SearchBar({ onSearch }) {
           </Search>
           <Button
             variant="contained"
-            sx={{ bgcolor: "#2c5699", "&:hover": { bgcolor: "#1c3763" } }}
+            sx={{ bgcolor: "#2c5699", "&:hover": { bgcolor: "#1c3763" }}}
             onClick={handleOnSearch}
           >
             Search

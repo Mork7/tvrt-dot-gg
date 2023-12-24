@@ -7,6 +7,7 @@ import { getPlayerRank } from "./utils/getPlayerApi";
 import { useEffect } from "react";
 import { CircularProgress, Typography } from "@mui/material";
 import MostPlayed from "./components/MostPlayedTile";
+import { commonSmallScreenStyles } from './utils/commonSmallScreenStyles';
 
 const responsiveSettings = {
   display: "flex",
@@ -85,7 +86,7 @@ function App() {
               padding: "25px"
             }}
           >
-            <Typography sx={{ alignContent: "center" }}>
+            <Typography sx={{ alignContent: "center", color: commonSmallScreenStyles.fontColor}}>
               Searching for summoner... If you haven&apos;t input the Summoner Name
               and Tag Line please do so and hit search!
             </Typography>
