@@ -10,7 +10,7 @@ export default function ProfileTile(currentPlayer) {
     <Paper
       sx={{
         height: "100%",
-        width: "425px", // this will be set dynamically according to summoner name length. There is a max char limit for names I just don't know it yet.
+        width: "auto", // this will be set dynamically according to summoner name length. There is a max char limit for names I just don't know it yet.
         backgroundColor: "#212422",
         margin: "10px 10px auto ",
         display: "flex",

@@ -20,7 +20,8 @@ export default function MostPlayed({ mostPlayedChamps }) {
     <Paper
       sx={{
         height: "100%",
-        width: "425px",
+        width: "auto",
+        padding: "15px",
         backgroundColor: "#212422",
         margin: "10px auto", // Center the Paper horizontally
         display: "flex",

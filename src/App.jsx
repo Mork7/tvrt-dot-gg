@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SearchBar from "./components/SearchBar";
-import FriendsTable from "./components/FriendsTable";
+import ChampionTable from "./components/ChampionTable";
 import ProfileTile from "./components/ProfileTile";
 import Box from "@mui/system/Box";
 import { getChampion, getPlayerRank } from "./utils/leagueApi";
@@ -116,14 +116,7 @@ function App() {
             <CircularProgress sx={{ margin: "auto", color: "grey" }} />
           </Box>
         )}
-        <FriendsTable />
-        {championData && (
-          <div>
-            {Object.entries(championData[0]).map(([key, value]) => (
-              <p key={key}>{`${key}: ${value}`}</p>
-            ))}
-          </div>
-        )}
+        {championData && <ChampionTable championData={championData} />}
       </Box>
     </Box>
   );
