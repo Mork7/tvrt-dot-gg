@@ -25,3 +25,17 @@ export const getPlayerRank = async (summonerName, tagLine, region) => {
     throw error;
   }
 };
+
+export const getChampion = async (championName) => {
+  try {
+    const response = await api.get('/api/selectChamp', {
+      params: {
+        name: championName,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching champion:', error);
+    throw error;
+  }
+}

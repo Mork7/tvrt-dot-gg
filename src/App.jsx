@@ -3,11 +3,11 @@ import SearchBar from "./components/SearchBar";
 import FriendsTable from "./components/FriendsTable";
 import ProfileTile from "./components/ProfileTile";
 import Box from "@mui/system/Box";
-import { getPlayerRank } from "./utils/getPlayerApi";
+import { getChampion, getPlayerRank } from "./utils/leagueApi";
 import { useEffect } from "react";
 import { CircularProgress, Typography } from "@mui/material";
 import MostPlayed from "./components/MostPlayedTile";
-import { commonSmallScreenStyles } from './utils/commonSmallScreenStyles';
+import { commonSmallScreenStyles } from "./utils/commonSmallScreenStyles";
 
 const responsiveSettings = {
   display: "flex",
@@ -25,8 +25,9 @@ function App() {
   const [searchParams, setSearchParams] = useState({
     summonerName: "",
     tagLine: "",
-    region: "na"
+    region: "na",
   });
+  const [championData, setChampionData] = useState(null);
 
   const handleSearch = ({ summonerName, tagLine, region }) => {
     setSearchParams({ summonerName, tagLine, region });
@@ -50,6 +51,21 @@ function App() {
 
     fetchData();
   }, [searchParams]);
+
+  useEffect(() => {
+    const fetchChampionData = async () => {
+      try {
+        const championData = await getChampion("nocturne");
+        console.log(championData[0]);
+        setChampionData(championData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    if (championData === null) {
+      fetchChampionData();
+    }
+  }, [championData]);
 
   return (
     /* this is the container for the entire app */
@@ -75,7 +91,7 @@ function App() {
               marginBottom: "auto",
             }}
           >
-            <ProfileTile {...currentPlayer} region={searchParams.region}/>
+            <ProfileTile {...currentPlayer} region={searchParams.region} />
             <MostPlayed mostPlayedChamps={currentPlayer[0].champsUsed} />
           </Box>
         ) : (
@@ -84,18 +100,30 @@ function App() {
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
-              padding: "25px"
+              padding: "25px",
             }}
           >
-            <Typography sx={{ alignContent: "center", color: commonSmallScreenStyles.fontColor}}>
-              Searching for summoner... If you haven&apos;t input the Summoner Name
-              and Tag Line please do so and hit search!
+            <Typography
+              sx={{
+                alignContent: "center",
+                color: commonSmallScreenStyles.fontColor,
+              }}
+            >
+              Searching for summoner... If you haven&apos;t input the Summoner
+              Name and Tag Line please do so and hit search!
             </Typography>
 
             <CircularProgress sx={{ margin: "auto", color: "grey" }} />
           </Box>
         )}
         <FriendsTable />
+        {championData && (
+          <div>
+            {Object.entries(championData[0]).map(([key, value]) => (
+              <p key={key}>{`${key}: ${value}`}</p>
+            ))}
+          </div>
+        )}
       </Box>
     </Box>
   );
