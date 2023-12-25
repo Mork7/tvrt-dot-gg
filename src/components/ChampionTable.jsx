@@ -8,7 +8,8 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 import TextField from "@mui/material/TextField";
-// import { useState } from "react";
+import { InputLabel } from "@mui/material";
+import { useState, useEffect } from "react";
 
 ChampionTable.propTypes = {
   championData: PropTypes.arrayOf(
@@ -33,12 +34,23 @@ const cellStyle = {
 };
 
 export default function ChampionTable({ championData }) {
+  const [championToSearch, setChampionToSearch] = useState("");
+
+  const handleChange = (event) => {
+    setChampionToSearch(event);
+  };
+
+  useEffect(() => {
+    console.log(championToSearch);
+  }, [championToSearch]);
+
   return (
     <Box
       sx={{
         width: "auto",
         margin: "10px 0 10px auto",
         "@media (max-width: 808px)": {
+          width: "auto",
           margin: "10px auto",
           display: "flex",
           flexDirection: "column",
@@ -46,36 +58,27 @@ export default function ChampionTable({ championData }) {
       }}
     >
       <TableContainer component={Paper} sx={{ borderRadius: "1%" }}>
-        <Table
-          sx={{ minWidth: 400, backgroundColor: "#212422" }}
-          aria-label="simple table"
-        >
+        <Table sx={{ backgroundColor: "#212422" }} aria-label="simple table">
           {/* TABLE HEAD: SUMMONERNAME, RANK, LP, WINS , LOSSES */}
           <TableHead sx={headerCellStyle}>
             <TableRow sx={{ height: "80px", display: "flex" }}>
               <TableCell
-                sx={{
-                  ...cellStyle,
-                  fontWeight: 600,
-                  fontSize: "large",
-                  display: "flex",
-                  alignItems: "center",
-                }}
-              >
-                {championData[0].champName}
-              </TableCell>
-              <TableCell
                 sx={{ ...cellStyle, display: "flex", alignItems: "center" }}
               >
+                <InputLabel sx={{ color: "#d5d6db" }} htmlFor="champion-search">
+                  Search Champion...
+                </InputLabel>
                 <TextField
-                  id="outlined-basic"
+                  id="champion-search"
                   label="Champion Name"
                   variant="outlined"
                   size="small"
                   sx={{
                     color: "white",
                     padding: "5px",
+                    marginLeft: "5px",
                   }}
+                  onChange={(event) => handleChange(event.target.value)}
                 />
               </TableCell>
             </TableRow>
@@ -84,11 +87,9 @@ export default function ChampionTable({ championData }) {
           <TableBody>
             {Object.entries(championData[0]).map(([key, value]) => (
               <TableRow key={key}>
-                {key !== "champName" ? (
-                  <TableCell key={value} sx={{ ...cellStyle, width: "100%" }}>
-                    {`${key}: ${value}`}
-                  </TableCell>
-                ) : null}
+                <TableCell key={value} sx={{ ...cellStyle, width: "100%" }}>
+                  {`${key}: ${value}`}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
