@@ -3,7 +3,7 @@ import SearchBar from "./components/SearchBar";
 import ChampionTable from "./components/ChampionTable";
 import ProfileTile from "./components/ProfileTile";
 import Box from "@mui/system/Box";
-import { getChampion, getPlayerRank } from "./utils/leagueApi";
+import { getPlayerRank } from "./utils/leagueApi";
 import { useEffect } from "react";
 import { CircularProgress, Typography } from "@mui/material";
 import MostPlayed from "./components/MostPlayedTile";
@@ -27,7 +27,6 @@ function App() {
     tagLine: "",
     region: "na",
   });
-  const [championData, setChampionData] = useState(null);
 
   const handleSearch = ({ summonerName, tagLine, region }) => {
     setSearchParams({ summonerName, tagLine, region });
@@ -52,27 +51,12 @@ function App() {
     fetchData();
   }, [searchParams]);
 
-  useEffect(() => {
-    const fetchChampionData = async () => {
-      try {
-        const championData = await getChampion("nocturne");
-        console.log(championData[0]);
-        setChampionData(championData);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    if (championData === null) {
-      fetchChampionData();
-    }
-  }, [championData]);
-
   return (
     /* this is the container for the entire app */
     <Box
       sx={{
         background: "radial-gradient(circle, #333333, #242b42)",
-        height: "100%",
+        height: "auto",
         width: "100%",
       }}
     >
@@ -116,7 +100,7 @@ function App() {
             <CircularProgress sx={{ margin: "auto", color: "grey" }} />
           </Box>
         )}
-        {championData && <ChampionTable championData={championData} />}
+        {<ChampionTable />}
       </Box>
     </Box>
   );

@@ -8,8 +8,9 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 import TextField from "@mui/material/TextField";
-import { InputLabel } from "@mui/material";
+import { InputLabel, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
+import { getChampion } from "../utils/leagueApi";
 
 ChampionTable.propTypes = {
   championData: PropTypes.arrayOf(
@@ -33,16 +34,37 @@ const cellStyle = {
   borderBottom: "1px solid #34333d",
 };
 
-export default function ChampionTable({ championData }) {
+export default function ChampionTable() {
+  const [championData, setChampionData] = useState(null);
   const [championToSearch, setChampionToSearch] = useState("");
 
   const handleChange = (event) => {
     setChampionToSearch(event);
   };
 
+  const handleEnterPress = (event) => {
+    if (event.key === 'Enter') {
+      // Trigger search when Enter key is pressed
+      fetchChampionData();
+    }
+  }
+
+  const fetchChampionData = async () => {
+    try {
+      const championData = await getChampion(championToSearch);
+      console.log(championData[0]);
+      setChampionData(championData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
-    console.log(championToSearch);
-  }, [championToSearch]);
+    
+    if (championData === null) {
+      fetchChampionData();
+    }
+  });
 
   return (
     <Box
@@ -79,11 +101,13 @@ export default function ChampionTable({ championData }) {
                     marginLeft: "5px",
                   }}
                   onChange={(event) => handleChange(event.target.value)}
+                  onKeyDown={handleEnterPress}
                 />
               </TableCell>
             </TableRow>
           </TableHead>
-
+              
+          {championData ? (
           <TableBody>
             {Object.entries(championData[0]).map(([key, value]) => (
               <TableRow key={key}>
@@ -93,6 +117,10 @@ export default function ChampionTable({ championData }) {
               </TableRow>
             ))}
           </TableBody>
+          ) : (
+          <Typography>Please search a champion...</Typography>)}
+          
+          
         </Table>
       </TableContainer>
     </Box>
