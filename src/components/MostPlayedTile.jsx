@@ -47,7 +47,7 @@ export default function MostPlayed({ mostPlayedChamps }) {
               <ListItemAvatar sx={{ display: "flex", justifyContent: "center" }}>
                 <Avatar>
                   <img
-                    src={`./champion-icons/${champ.replace(/\s/g, "")}.webp`} // no spaces
+                    src={`./champion-icons/${champ}.webp`} // no spaces
                     alt="champ-icon"
                     style={{
                       width: "100%",

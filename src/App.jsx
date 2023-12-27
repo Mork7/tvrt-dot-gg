@@ -57,6 +57,7 @@ function App() {
       sx={{
         background: "radial-gradient(circle, #333333, #242b42)",
         height: "auto",
+        minHeight: "100vh",
         width: "100%",
       }}
     >
@@ -100,7 +101,7 @@ function App() {
             <CircularProgress sx={{ margin: "auto", color: "grey" }} />
           </Box>
         )}
-        {<ChampionTable />}
+        <ChampionTable />
       </Box>
     </Box>
   );
