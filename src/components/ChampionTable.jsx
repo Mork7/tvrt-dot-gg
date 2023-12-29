@@ -60,7 +60,7 @@ export default function ChampionTable() {
     <Box
       sx={{
         width: "auto",
-        margin: "10px 0 10px auto",
+        margin: "10px",
         "@media (max-width: 808px)": {
           width: "auto",
           margin: "10px auto",
