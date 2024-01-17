@@ -6,19 +6,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
-import PropTypes from "prop-types";
 import TextField from "@mui/material/TextField";
-import { InputLabel, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
+import { InputLabel, Typography, Avatar } from "@mui/material";
+import { useState } from "react";
 import { getChampion } from "../utils/leagueApi";
-
-ChampionTable.propTypes = {
-  championData: PropTypes.arrayOf(
-    PropTypes.shape({
-      champName: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
 
 // styles for the headers
 const headerCellStyle = {
@@ -43,11 +34,11 @@ export default function ChampionTable() {
   };
 
   const handleEnterPress = (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       // Trigger search when Enter key is pressed
       fetchChampionData();
     }
-  }
+  };
 
   const fetchChampionData = async () => {
     try {
@@ -59,18 +50,17 @@ export default function ChampionTable() {
     }
   };
 
-  useEffect(() => {
-    
-    if (championData === null) {
-      fetchChampionData();
-    }
-  });
+  // useEffect(() => {
+  //   if (championData === null) {
+  //     fetchChampionData();
+  //   }
+  // });
 
   return (
     <Box
       sx={{
         width: "auto",
-        margin: "10px 0 10px auto",
+        margin: "10px",
         "@media (max-width: 808px)": {
           width: "auto",
           margin: "10px auto",
@@ -96,9 +86,20 @@ export default function ChampionTable() {
                   variant="outlined"
                   size="small"
                   sx={{
-                    color: "white",
                     padding: "5px",
                     marginLeft: "5px",
+                    ".MuiInputBase-input": {
+                      color: "#d5d6db", // Text color
+                    },
+                    ".MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "#d5d6db", // Border color
+                    },
+                    ".MuiInputLabel-outlined": {
+                      color: "#d5d6db", // Label color when unfocused
+                    },
+                    "&.Mui-focused .MuiInputLabel-outlined": {
+                      color: "#d5d6db", // Label color when focused (if you want to change it)
+                    }
                   }}
                   onChange={(event) => handleChange(event.target.value)}
                   onKeyDown={handleEnterPress}
@@ -106,21 +107,51 @@ export default function ChampionTable() {
               </TableCell>
             </TableRow>
           </TableHead>
-              
+
           {championData ? (
-          <TableBody>
-            {Object.entries(championData[0]).map(([key, value]) => (
-              <TableRow key={key}>
-                <TableCell key={value} sx={{ ...cellStyle, width: "100%" }}>
-                  {`${key}: ${value}`}
+            <TableBody>
+              <TableRow>
+                <TableCell
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    ...cellStyle,
+                    padding: "5px",
+                  }}
+                >
+                  <Avatar>
+                    <img
+                      src={`./champion-icons/${championData[0].champName}.webp`} // no spaces
+                      alt="champ-icon"
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "50%",
+                      }}
+                    />
+                  </Avatar>
                 </TableCell>
               </TableRow>
-            ))}
-          </TableBody>
+              {Object.entries(championData[0]).map(([key, value]) => (
+                <TableRow key={key}>
+                  <TableCell key={value} sx={{ ...cellStyle, width: "100%" }}>
+                    {`${key}: ${value}`}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
           ) : (
-          <Typography>Please search a champion...</Typography>)}
-          
-          
+            <TableBody>
+              <TableRow>
+                <TableCell sx={cellStyle}>
+                  <Typography sx={{ ...cellStyle, borderBottom: "none" }}>
+                    Please search a champion...
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          )}
         </Table>
       </TableContainer>
     </Box>

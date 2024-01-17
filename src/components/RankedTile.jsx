@@ -48,13 +48,13 @@ export default function RankedTile(currentPlayerData) {
   const currentPlayer = currentPlayerData[0];
 
   useEffect(() => {
-    if (currentPlayer && currentPlayerData[0]) {
+    if (currentPlayer) {
       setRank(currentPlayer.rank);
       setWinLossRatio(currentPlayer.winLossRatio);
       setWinPercentage(currentPlayer.winPercentage);
       setLP(currentPlayer.lp);
     }
-  }, [currentPlayer, currentPlayerData]);
+  }, [currentPlayer]);
 
   // Initialize the state with an empty string if currentPlayer is not available
   const initialRank =
@@ -103,11 +103,18 @@ export default function RankedTile(currentPlayerData) {
           },
         }}
       >
-        {rank}
-        <Typography sx={{ fontSize: 10, paddingLeft: "40%" }}>
-          {" "}
-          {LP + " LP"}
-        </Typography>
+        {rank.includes("Challenger") ||
+        rank.includes("Master") ||
+        rank.includes("GrandMaster") ? (
+          rank
+        ) : (
+          <>
+            {rank}
+            <Typography sx={{ fontSize: 10, paddingLeft: "40%" }}>
+              {LP + " LP"}
+            </Typography>
+          </>
+        )}
       </Typography>
       <Box
         sx={{

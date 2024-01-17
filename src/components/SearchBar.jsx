@@ -63,6 +63,13 @@ export default function SearchBar({ onSearch }) {
     onSearch({ summonerName, tagLine, region });
   }
 
+  const handleEnterPress = (event) => {
+    if (event.key === "Enter") {
+      // Trigger search when Enter key is pressed
+      handleOnSearch();
+    }
+  };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -181,6 +188,7 @@ export default function SearchBar({ onSearch }) {
               id="summoner-name-input"
               inputProps={{ "aria-label": "search" }}
               onChange={(e) => setSummonerName(e.target.value)}
+              onKeyDown={handleEnterPress}
             />
             <StyledInputBase
               sx={{ bgcolor: "#47474" }}
@@ -188,6 +196,7 @@ export default function SearchBar({ onSearch }) {
               id="tag-line-input"
               inputProps={{ "aria-label": "search" }}
               onChange={(e) => setTagLine(e.target.value)}
+              onKeyDown={handleEnterPress}
             />
           </Search>
           <Button

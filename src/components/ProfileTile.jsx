@@ -12,7 +12,7 @@ export default function ProfileTile(currentPlayer) {
         height: "100%",
         width: "auto", // this will be set dynamically according to summoner name length. There is a max char limit for names I just don't know it yet.
         backgroundColor: "#212422",
-        margin: "10px 10px auto ",
+        margin: "10px",
         display: "flex",
         flexDirection: "column",
         // Apply styles for smaller screens using @media query

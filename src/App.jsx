@@ -13,6 +13,7 @@ const responsiveSettings = {
   display: "flex",
   flexDirection: "row",
   alignItems: "center",
+  justifyContent: "center",
   "@media (max-width: 808px)": {
     flexDirection: "column",
     alignItems: "center",
@@ -57,6 +58,7 @@ function App() {
       sx={{
         background: "radial-gradient(circle, #333333, #242b42)",
         height: "auto",
+        minHeight: "100vh",
         width: "100%",
       }}
     >
@@ -96,11 +98,10 @@ function App() {
               Searching for summoner... If you haven&apos;t input the Summoner
               Name and Tag Line please do so and hit search!
             </Typography>
-
-            <CircularProgress sx={{ margin: "auto", color: "grey" }} />
+            {searchParams.summonerName !== "" && <CircularProgress sx={{ margin: "auto", color: "grey" }}/>}
           </Box>
         )}
-        {<ChampionTable />}
+        <ChampionTable />
       </Box>
     </Box>
   );
