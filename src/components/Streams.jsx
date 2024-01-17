@@ -55,6 +55,7 @@ export default function Streams() {
         backgroundColor: "#212422",
         color: "#d5d6db",
         textWrap: "wrap",
+        fontFamily: "Roboto",
       }}
     >
       <h1 style={{ textAlign: "center" }}>Twitch Streams</h1>
