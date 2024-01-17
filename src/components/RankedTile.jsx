@@ -81,7 +81,7 @@ export default function RankedTile(currentPlayerData) {
     <Box
       sx={{
         display: "flex",
-        padding: "15px",
+        padding: "25px",
         ...commonSmallScreenStyles.smallScreenStyles,
         justifyContent: "space-between",
       }}
