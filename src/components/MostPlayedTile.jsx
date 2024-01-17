@@ -26,7 +26,7 @@ export default function MostPlayed({ mostPlayedChamps }) {
         margin: "10px auto", // Center the Paper horizontally
         display: "flex",
         flexDirection: "column",
-        alignItems: "center", // Center the content vertically
+        alignItems: "center", 
         // Apply styles for smaller screens using @media query
         ...commonSmallScreenStyles.smallScreenStyles,
       }}

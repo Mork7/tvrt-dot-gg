@@ -21,7 +21,7 @@ export default function ProfileTile(currentPlayer) {
     >
       <SummonerNameTile {...currentPlayer} />
       <hr style={{ width: "100%", marginBottom: "0px" }} />
-      <RankedTile {...currentPlayer}/>
+      <RankedTile {...currentPlayer} />
     </Paper>
   );
 }

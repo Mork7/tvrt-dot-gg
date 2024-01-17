@@ -8,11 +8,12 @@ import { useEffect } from "react";
 import { CircularProgress, Typography } from "@mui/material";
 import MostPlayed from "./components/MostPlayedTile";
 import { commonSmallScreenStyles } from "./utils/commonSmallScreenStyles";
+import Streams from "./components/Streams";
 
 const responsiveSettings = {
   display: "flex",
   flexDirection: "row",
-  alignItems: "center",
+  // alignItems: "center",
   justifyContent: "center",
   "@media (max-width: 808px)": {
     flexDirection: "column",
@@ -63,9 +64,11 @@ function App() {
       }}
     >
       <SearchBar onSearch={handleSearch} />
+
       <Box // this is the container for the app body
         sx={{
           ...responsiveSettings,
+          justifyContent: "space-evenly",
           marginTop: "100px", // this is the height of the fixed app bar, this is here so the top of the content of the page isnt behind the app bar and can be seen.
         }}
       >
@@ -85,23 +88,26 @@ function App() {
             sx={{
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
+              alignItems: "center",
               padding: "25px",
             }}
           >
             <Typography
               sx={{
-                alignContent: "center",
+                textAlign: "center",
                 color: commonSmallScreenStyles.fontColor,
               }}
             >
               Searching for summoner... If you haven&apos;t input the Summoner
-              Name and Tag Line please do so and hit search!
+              Name and Tag Line please do so and hit search! <br />
+              {searchParams.summonerName !== "" && (
+                <CircularProgress sx={{ margin: "auto", color: "grey" }} />
+              )}
             </Typography>
-            {searchParams.summonerName !== "" && <CircularProgress sx={{ margin: "auto", color: "grey" }}/>}
           </Box>
         )}
         <ChampionTable />
+        <Streams />
       </Box>
     </Box>
   );
