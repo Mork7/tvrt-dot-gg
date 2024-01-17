@@ -32,10 +32,10 @@ function selectRankImage(rank) {
       return imagePathDict.emerald;
     case rank.toLowerCase().includes("diamond"):
       return imagePathDict.diamond;
-    case rank.toLowerCase().includes("master"):
-      return imagePathDict.master;
     case rank.toLowerCase().includes("grandmaster"):
       return imagePathDict.grandmaster;
+    case rank.toLowerCase().includes("master"):
+      return imagePathDict.master;
     case rank.toLowerCase().includes("challenger"):
       return imagePathDict.challenger;
     default:
@@ -81,6 +81,7 @@ export default function RankedTile(currentPlayerData) {
     <Box
       sx={{
         display: "flex",
+        padding: "15px",
         ...commonSmallScreenStyles.smallScreenStyles,
         justifyContent: "space-between",
       }}

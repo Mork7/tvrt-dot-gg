@@ -1,10 +1,6 @@
 {
   "name": "tvrt-dot-gg",
-<<<<<<< HEAD
-  "private": true,
-=======
   "private": false,
->>>>>>> c6962bef8e18bd7e4f72473ddf966bab7aa12621
   "version": "1.0.0",
   "type": "module",
   "scripts": {
