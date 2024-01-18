@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getTwitchStreams } from "../utils/leagueApi";
+import "../index.css";
 
 export default function Streams() {
   const [streams, setStreams] = useState([]);
@@ -56,18 +57,19 @@ export default function Streams() {
 
       <hr style={{ width: "100%", marginBottom: "0px" }} />
       {streams.map((stream, index) => (
-        <div
-          style={styleNormal}
-          key={index}
-        >
-          <h2 style={{marginBottom: "0px"}}>{stream.displayName}</h2>
-          <h4 style={{ textAlign: "center", marginBottom: "0px" }}>{stream.title}</h4>
+        <div id={"hover-effect"} style={styleNormal} key={index}>
+          <h2 style={{ marginBottom: "0px" }}>{stream.displayName}</h2>
+          <h4 style={{ textAlign: "center", marginBottom: "0px" }}>
+            {stream.title}
+          </h4>
 
-          <h4 style={{marginBottom: "0px"}}>Viewer count: {stream.viewerCount}</h4>
+          <h4 style={{ marginBottom: "0px" }}>
+            Viewer count: {stream.viewerCount}
+          </h4>
           <h5>Language: {stream.language}</h5>
           <a
             href={`https://www.twitch.tv/${stream.displayName}`}
-            style={{ textTransform: "uppercase", textDecoration: "none"}}
+            style={{ textTransform: "uppercase", textDecoration: "none" }}
           >
             Watch {stream.type}
           </a>

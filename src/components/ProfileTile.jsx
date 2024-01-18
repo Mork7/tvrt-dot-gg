@@ -2,12 +2,13 @@ import Paper from "@mui/material/Paper";
 import RankedTile from "./RankedTile";
 import SummonerNameTile from "./SummonerNameTile";
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
+import "../index.css";
 // import { useEffect, useState } from "react";
 
 export default function ProfileTile(currentPlayer) {
-
   return (
     <Paper
+      id={"hover-effect"}
       sx={{
         height: "100%",
         width: "auto", // this will be set dynamically according to summoner name length. There is a max char limit for names I just don't know it yet.
