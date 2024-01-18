@@ -2,7 +2,6 @@ import Paper from "@mui/material/Paper";
 import RankedTile from "./RankedTile";
 import SummonerNameTile from "./SummonerNameTile";
 import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
-import "../index.css";
 // import { useEffect, useState } from "react";
 
 export default function ProfileTile(currentPlayer) {
