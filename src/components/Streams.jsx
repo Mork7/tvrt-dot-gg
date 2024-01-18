@@ -3,7 +3,6 @@ import { getTwitchStreams } from "../utils/leagueApi";
 
 export default function Streams() {
   const [streams, setStreams] = useState([]);
-  const [hoverStates, setHoverStates] = useState(false);
 
   useEffect(() => {
     const fetchStreams = async () => {
@@ -11,15 +10,6 @@ export default function Streams() {
         const streams = await getTwitchStreams();
         console.log(streams);
         setStreams(streams);
-
-        let initiaHoverStates = {};
-
-        streams.forEach((_,index) => {
-            initiaHoverStates[index] = false;
-        })
-
-        setHoverStates(initiaHoverStates);
-
       } catch (error) {
         console.error(error);
       }
@@ -38,11 +28,6 @@ export default function Streams() {
     color: "inherit",
   };
 
-  const styleHovered = {
-    boxShadow: "0px 0px 5px 5px darkgray",
-    ...styleNormal,
-  };
-
   return (
     <div
       style={{
@@ -58,23 +43,36 @@ export default function Streams() {
         fontFamily: "Roboto",
       }}
     >
-      <h1 style={{ textAlign: "center" }}>Twitch Streams</h1>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <img style={{ width: "95px" }} src="./twitch.webp" alt="twitch" />
+        <h1 style={{ textAlign: "center" }}>Streams</h1>
+      </div>
+
       <hr style={{ width: "100%", marginBottom: "0px" }} />
       {streams.map((stream, index) => (
-        <a
-          href={`https://www.twitch.tv/${stream.displayName}`}
-          style={hoverStates[index] ? styleHovered : styleNormal}
-          onMouseEnter={() => setHoverStates({ ...hoverStates, [index]: true })}
-          onMouseLeave={() => setHoverStates({ ...hoverStates, [index]: false })}
+        <div
+          style={styleNormal}
           key={index}
         >
-          <h1>{stream.displayName}</h1>
-          <h3 style={{ textAlign: "center" }}>Title: {stream.title}</h3>
+          <h2 style={{marginBottom: "0px"}}>{stream.displayName}</h2>
+          <h4 style={{ textAlign: "center", marginBottom: "0px" }}>{stream.title}</h4>
 
-          <h3>Viewer count: {stream.viewerCount}</h3>
-          <h3 style={{ textTransform: "uppercase" }}>{stream.type}</h3>
+          <h4 style={{marginBottom: "0px"}}>Viewer count: {stream.viewerCount}</h4>
+          <h5>Language: {stream.language}</h5>
+          <a
+            href={`https://www.twitch.tv/${stream.displayName}`}
+            style={{ textTransform: "uppercase", textDecoration: "none"}}
+          >
+            Watch {stream.type}
+          </a>
           <hr style={{ width: "100%", marginBottom: "0px" }} />
-        </a>
+        </div>
       ))}
     </div>
   );
