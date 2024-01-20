@@ -25,3 +25,6 @@ dist-ssr
 .env
 
 firebase-config.js
+
+# Local Netlify folder
+.netlify
