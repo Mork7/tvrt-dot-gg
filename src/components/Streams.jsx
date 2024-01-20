@@ -42,6 +42,7 @@ export default function Streams() {
         color: "#d5d6db",
         textWrap: "wrap",
         fontFamily: "Roboto",
+        marginBottom: "200px"
       }}
     >
       <div

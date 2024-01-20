@@ -5,6 +5,7 @@ import { commonSmallScreenStyles } from "../utils/commonSmallScreenStyles.js";
 
 function selectRankImage(rank) {
   const imagePathDict = {
+    unranked: "./unranked.png",
     iron: "./iron.webp",
     bronze: "./bronze.webp",
     silver: "./silver.webp",
@@ -18,6 +19,8 @@ function selectRankImage(rank) {
   };
   // ex, if a players rank was Iron II, then imagePathDict.Iron would be returned
   switch (true) {
+    case rank.toLowerCase().includes("unranked"):
+      return imagePathDict.unranked;
     case rank.toLowerCase().includes("iron"):
       return imagePathDict.iron;
     case rank.toLowerCase().includes("bronze"):
@@ -146,7 +149,7 @@ export default function RankedTile(currentPlayerData) {
             },
           }}
         >
-          {winPercentage}
+          {winPercentage.includes("NaN") ? "0%" : winPercentage}
         </Typography>
       </Box>
     </Box>
