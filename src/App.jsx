@@ -1,4 +1,4 @@
-import { isValidElement, useState } from "react";
+import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import ChampionTable from "./components/ChampionTable";
 import ProfileTile from "./components/ProfileTile";
