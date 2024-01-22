@@ -15,8 +15,8 @@ export default function Footer({ onContactClick, onHomeClick, onAboutClick }) {
     >
       <img
         style={{ width: "150px" }}
-        src="./codewave-logo.webp"
-        alt="codewave-logo"
+        src="./infinerty-logo.png"
+        alt="Infinerty Logo"
       />
       <div
         style={{
