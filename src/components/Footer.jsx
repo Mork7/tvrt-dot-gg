@@ -8,7 +8,7 @@ export default function Footer({ onContactClick, onHomeClick, onAboutClick }) {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#262530",
-        height: "150px",
+        height: "100px",
         bottom: "0",
         position: "fixed"
       }}
