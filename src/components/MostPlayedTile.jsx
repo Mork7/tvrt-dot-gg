@@ -18,6 +18,7 @@ export default function MostPlayed({ mostPlayedChamps }) {
 
   return (
     <Paper
+      id={"hover-effect"}
       sx={{
         height: "100%",
         width: "auto",
@@ -26,7 +27,7 @@ export default function MostPlayed({ mostPlayedChamps }) {
         margin: "10px auto", // Center the Paper horizontally
         display: "flex",
         flexDirection: "column",
-        alignItems: "center", // Center the content vertically
+        alignItems: "center",
         // Apply styles for smaller screens using @media query
         ...commonSmallScreenStyles.smallScreenStyles,
       }}
@@ -44,7 +45,9 @@ export default function MostPlayed({ mostPlayedChamps }) {
           </ListItem>
           {mostPlayedChamps.map((champ) => (
             <React.Fragment key={champ}>
-              <ListItemAvatar sx={{ display: "flex", justifyContent: "center" }}>
+              <ListItemAvatar
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
                 <Avatar>
                   <img
                     src={`./champion-icons/${champ}.webp`} // no spaces
@@ -58,10 +61,10 @@ export default function MostPlayed({ mostPlayedChamps }) {
                   />
                 </Avatar>
                 <ListItemText sx={{ marginLeft: ".5rem" }}>
-                  <Typography sx={{color: "#d5d6db" }}>{champ}</Typography>
+                  <Typography sx={{ color: "#d5d6db" }}>{champ}</Typography>
                 </ListItemText>
               </ListItemAvatar>
-              <Divider sx={{margin: "5px"}}/>
+              <Divider sx={{ margin: "5px" }} />
             </React.Fragment>
           ))}
         </List>

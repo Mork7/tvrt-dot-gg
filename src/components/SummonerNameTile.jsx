@@ -41,7 +41,7 @@ export default function SummonerNameTile(currentPlayerData) {
       id="summoner-name-container"
       component="section"
       sx={{
-        p: 0,
+        padding: "10px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",

@@ -69,7 +69,7 @@ export default function ChampionTable() {
         },
       }}
     >
-      <TableContainer component={Paper} sx={{ borderRadius: "1%" }}>
+      <TableContainer id={"hover-effect"} component={Paper} sx={{ borderRadius: "1%" }}>
         <Table sx={{ backgroundColor: "#212422" }} aria-label="simple table">
           {/* TABLE HEAD: SUMMONERNAME, RANK, LP, WINS , LOSSES */}
           <TableHead sx={headerCellStyle}>
@@ -99,7 +99,7 @@ export default function ChampionTable() {
                     },
                     "&.Mui-focused .MuiInputLabel-outlined": {
                       color: "#d5d6db", // Label color when focused (if you want to change it)
-                    }
+                    },
                   }}
                   onChange={(event) => handleChange(event.target.value)}
                   onKeyDown={handleEnterPress}
