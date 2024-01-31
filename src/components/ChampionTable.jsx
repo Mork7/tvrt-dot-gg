@@ -121,7 +121,7 @@ export default function ChampionTable() {
                 >
                   <Avatar>
                     <img
-                      src={`./champion-icons/${championData[0].champName}.webp`} // no spaces
+                      src={`./champion-icons/${championData[0].champName}.webp`}
                       alt="champ-icon"
                       style={{
                         width: "100%",
